@@ -1,5 +1,5 @@
-import User from './User'
+import User from './models/User'
 
 module.exports = {
-	
-}
+
+};

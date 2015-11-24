@@ -5,7 +5,8 @@ var   gulp = require('gulp')
 	, sass = require('gulp-sass')
 	, uglify = require('gulp-uglify')
 	, uglifyCss = require('gulp-uglifycss')
-	, watcher = gulp.watch(['./main/**/*.js', './main/styles/*.scss'], ['default']);
+	, htmlMin = require('gulp-htmlmin')
+	, watcher = gulp.watch(['./main/**/*.js', './main/**/*.html', './main/styles/*.scss'], ['default']);
 
 watcher.on('change', function( event ) {
 	console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
@@ -19,7 +20,13 @@ gulp.task('clientJS', function() {
 			.pipe(ngAnnotate())
 			.pipe(concat('src.min.js'))
 			.pipe(uglify())
-			.pipe(gulp.dest('./public/scripts/'));
+			.pipe(gulp.dest('./public/scripts'));
+});
+
+gulp.task('html', function() {
+	gulp.src('./main/client/directiveTemplates/*.html')
+			.pipe(htmlMin())
+			.pipe(gulp.dest('./public/templates'));
 });
 
 gulp.task('serverJS', function() {
@@ -38,4 +45,4 @@ gulp.task('sass', function() {
 			.pipe(gulp.dest('./public/styles/'));
 });
 
-gulp.task('default', ['clientJS', 'serverJS', 'sass']);
+gulp.task('default', ['clientJS', 'html', 'serverJS', 'sass']);
