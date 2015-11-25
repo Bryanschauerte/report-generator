@@ -17,7 +17,7 @@ module.exports = {
 		});
 	},
 	addStudent: function addStudent(req, res) {
-		_StudentGroup2.default.findById(req.params.id, function (err, group) {
+		_StudentGroup2.default.findById(req.params.groupId, function (err, group) {
 			if (err) {
 				return res.status(500).send(err);
 			}
@@ -32,7 +32,7 @@ module.exports = {
 		});
 	},
 	removeStudent: function removeStudent(req, res) {
-		_StudentGroup2.default.findById(req.params.id, function (err, group) {
+		_StudentGroup2.default.findById(req.params.groupId, function (err, group) {
 			if (err) {
 				return res.status(500).send(err);
 			}
@@ -47,7 +47,7 @@ module.exports = {
 		});
 	},
 	deleteGroup: function deleteGroup(req, res) {
-		_StudentGroup2.default.findByIdAndRemove(req.params.id, function (err, group) {
+		_StudentGroup2.default.findByIdAndRemove(req.params.groupId, function (err, group) {
 			if (err) {
 				return res.status(500).send(err);
 			}
@@ -56,7 +56,7 @@ module.exports = {
 		});
 	},
 	updateGrades: function updateGrades(req, res) {
-		_StudentGroup2.default.findById(req.params.id, function (err, group) {
+		_StudentGroup2.default.findById(req.params.groupId, function (err, group) {
 			if (err) {
 				return res.status(500).send(err);
 			}
