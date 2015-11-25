@@ -40,7 +40,7 @@ app.get('/auth/google', authCtrl.google);
 
 app.get('/auth/google/callback', authCtrl.googleCallback);
 
-app.get('/auth', isAuth, authCtrl.auth);
+app.get('/auth', authCtrl.isAuth, authCtrl.auth);
 
 
 
@@ -68,13 +68,3 @@ app.put('/api/groups/update-grade/:groupId/:studentId', groupCtrl.updateGrades);
 app.listen(port, function() {
 	console.log('Listening on ' + port);
 });
-
-function isAuth(req, res, next) {
-    // if user is authenticated in the session, carry on
-    if (req.user){
-        next();
-    } else {
-   	// if they aren't redirect them to the home page
-    	res.status(403).send('not allowed');
-    }
-}

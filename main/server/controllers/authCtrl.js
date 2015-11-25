@@ -31,6 +31,14 @@ module.exports = {
 
 	auth( req, res ) {
 		res.send(req.user);
+	},
+
+	isAuth( req, res ) {
+	    if (req.user){
+	        next();
+	    } else {
+	    	res.status(403).send('not allowed');
+	    }
 	}
 
 }
