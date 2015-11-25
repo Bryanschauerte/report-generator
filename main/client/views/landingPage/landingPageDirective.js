@@ -1,4 +1,4 @@
-anuglar.module("reportGenerator").directive("landingPage", function(){
+angular.module("reportGenerator").directive("landingPage", function(){
 
   return {
     templateUrl:'',
