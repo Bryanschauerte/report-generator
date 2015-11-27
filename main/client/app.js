@@ -3,11 +3,15 @@ angular.module('reportGenerator', ['ui.router'])
 .config(function( $stateProvider, $urlRouterProvider ) {
 
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
 	.state('home', {
 		url: '/',
-		template: '<h1>test</h1>',
+		template: '<landing-Page></landing-Page>'
+	})
+	.state('myClasses', {
+		url: '/myClasses',
+		template: "<my-Classes></my-Classes>"
 	})
 
 });

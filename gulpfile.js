@@ -24,9 +24,9 @@ gulp.task('clientJS', function() {
 });
 
 gulp.task('html', function() {
-	gulp.src('./main/client/directiveTemplates/*.html')
+	gulp.src('./main/client/**/*.html')
 			.pipe(htmlMin())
-			.pipe(gulp.dest('./public/templates'));
+			.pipe(gulp.dest('./public/'));
 });
 
 gulp.task('serverJS', function() {

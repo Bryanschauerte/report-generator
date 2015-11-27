@@ -1,7 +1,7 @@
-anuglar.module("reportGenerator").directive("landingPage", function(){
+angular.module("reportGenerator").directive("landingPage", () =>{
 
   return {
-    templateUrl:'',
+    templateUrl:'./views/landingPage/landingPageTemplate.html',
     attribute: "E",
     controller: "landingPageCtrl",
     controllerAs: "is",
