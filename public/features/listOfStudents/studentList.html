@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="whiteAccent col s2">
+    <h4>Class Info</h4>
+
+    <ul class="collection">
+      <li class="collection-item" ng-click="is.editStudent(student)" ng-repeat="student in is.studentList.students">{{student.name}}</li>
+      <li>
+        <a class="waves-effect waves-light btn" ng-click="is.startAddNewStudent()" ng-show="!is.addingStudent">Add a New Student</a>
+      </li>
+      <li ng-if="is.addingStudent">New Student name:
+        <input ng-model="is.newStudent.name" type="text">
+        <select class="browser-default" ng-class="{'redBackground': (!is.newStudent.gender)}" ng-model="is.newStudent.gender">
+          <option disabled="disabled" selected="selected" value="">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <a class="colorAccent waves-effect waves-light btn" ng-click="is.endAddNewStudent(is.newStudent)" ng-if="is.addingStudent && is.newStudent.gender && is.newStudent.name">Add!</a>
+        <a class="redBackground waves-effect waves-light btn" ng-click="is.addNewStudent()" ng-if="is.addingStudent">Cancel</a>
+      </li>
+    </ul>
+  </div>
+
+<div class="col s10">
+  <student ng-show="is.currentStudent" student-info="is.currentStudent"></student>
+</div>
+</div>

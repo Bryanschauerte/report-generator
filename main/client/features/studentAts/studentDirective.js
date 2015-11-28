@@ -1,4 +1,4 @@
-angular.module('reportGenerator').directive('student', ()=>{
+angular.module('reportGenerator').directive('student', function(){
 
   return {
 
@@ -7,8 +7,9 @@ angular.module('reportGenerator').directive('student', ()=>{
     controller: "studentCtrl",
     controllerAs: "is",
     bindToController: true,
+
     scope: {
-      student: '='
+      studentInfo: '='
     }
   }
 

@@ -7,6 +7,9 @@ $darkAccent: #515151;
 $whiteAccent: #FFFFFF;
 $colorAccent: #00B4FF;
 $greyAccent: #EEEEEE;
+$redAccent: #FF3100;
+$yellowAccent: #FFB700;
+
 
 .whiteText {
 	color: $whiteAccent;
@@ -64,6 +67,19 @@ color: $darkAccent;
 .studentContainer{
 	display: flex;
 	align-items: center;
+}
+.genderBox {
+position: absolute;
+top: 45%;
+
+}
+.redBackground {
+	background-color: $redAccent;
+}
+.inputNameGender {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 

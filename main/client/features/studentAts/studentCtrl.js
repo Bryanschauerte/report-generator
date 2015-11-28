@@ -1,32 +1,26 @@
-angular.module('reportGenerator').controller('studentCtrl', function(){
+angular.module('reportGenerator').controller('studentCtrl', function($scope,classService, $element){
+var self = this;
+console.log(self.studentInfo);
+this.student = self.studentInfo;
 
 
-  $(document).ready(function() {
-    $('select').material_select();
+  this.changeStudentAtt = function(student, e) {
+    // self.doIt();
+      console.log(self.student);
+classService.changeAttribute(student);
+
+  }
+
+  $scope.$watch('is.studentInfo', function (newValue, oldValue) {
+self.student = self.studentInfo;
+console.log(newValue);
   });
 
-  // this.student = {
-  //   className: null,
-  //   name: null,
-  //   readingAbility: null,
-  //   vocabularyTests: null,
-  //   speakingAbility: null,
-  //   behavior: null,
-  //   readingComprehension: null,
-  //   speakingAbilityVocabulary: null,
-  //   participation: null,
-  //   pronuncation: null
-  //
-  //
-  //
-  // }
-console.log('controller firing')
-  //
-this.saveStudent= function(student) {
-  // this.student = student;
-    console.log(student);
-  };
+  this.doIt = function () {
 
-// saveStudent();
+      $('select').material_select();
+  }
+
+
 
 })
