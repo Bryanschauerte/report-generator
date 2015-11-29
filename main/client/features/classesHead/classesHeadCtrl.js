@@ -16,8 +16,13 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
     checkClasses();
   });
 
+  $scope.$watch('is.showStudent', function(newValue, oldValue) {
+    console.log('change');
+  });
   this.startAdding = function() {
-    console.log("start", self.newClassName)
+    console.log(self.showStudent, "should showStudent")
+    self.showStudent = false;
+
     self.newClassName = '';
     self.addingAClass = !self.addingAClass;
   }
@@ -39,7 +44,7 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
 else if(!newName){
   alert("Only new class names allowed")
 }
-self.selectClass(classInfo);
+  self.selectClass(classInfo);
   };
 
   this.selectClass = function(classPart) {

@@ -3,10 +3,11 @@ var self = this;
 this.addingStudent = false;
 this.studentList = self.classInfo;
 
+
 this.editStudent = function(student){
+  self.showStudent =true;
   student.className = self.studentList.name;
   self.currentStudent = student;
-
 }
 
   $scope.$watch('is.classInfo', function (newValue, oldValue) {
@@ -22,6 +23,7 @@ this.createAllReports = function(){
 }
 this.startAddNewStudent = function(){
   self.addingStudent = !self.addingStudent;
+  self.showStudent = false;
 }
 
 this.cancelAdd = function(){

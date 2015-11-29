@@ -7,12 +7,31 @@ $colorAccent: #00B4FF;
 $greyAccent: #EEEEEE;
 $redAccent: #FF3100;
 $yellowAccent: #FFB700;
+$greenAccent: #00FF67;
+
 .classesTitle {
 	border-bottom: medium solid $darkAccent
+}
+.doneButton {
+	position: absolute;
+	top:0px;
+	right:0px;
+	width:30%;
+}
+.redBackground {
+	background-color: $redAccent;
+}
+.extraWidth{
+	width: 100%;
+}
+.studentAttContainer{
+	position: relative;
 }
 .instructions{
 	color: $redAccent;
 
+}
+.attRow {
 }
 .accentText {
 	color: $colorAccent;

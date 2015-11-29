@@ -9,7 +9,8 @@ angular.module('reportGenerator').directive('studentList', function(){
     bindToController: true,
 
     scope: {
-      classInfo: '='
+      classInfo: '=',
+      showStudent: "="
     }
   }
 

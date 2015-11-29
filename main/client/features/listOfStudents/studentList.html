@@ -1,16 +1,16 @@
 <div class="row">
   <div class="whiteAccent boxOfAtt col s2 center-align">
     <h4 ng-show = "is.classInfo">{{is.classInfo.className}}</h4>
-    <h5 ng-show = "!is.classInfo" class = "instructions">Select a Class or <em>Create</em> a new one</h5>
+    <h5 ng-show = "!is.classInfo" class = "instructions">Select a class or <em>add</em> a new one</h5>
 
     <ul class="collection">
       <li class = "collection-item center">
-        <p ng-show = "is.classInfo.students.length ==0" class = "instructions"> Click below on 'Add Student'</p></li>
-        <p ng-show = "is.classInfo.students.length !=0">Click on each student's name to ready your reports</p></li>
+        <p ng-show = "is.classInfo.students.length ==0 && is.classInfo" class = "instructions"> Click below on 'Add Student'. Add name and Gender. </p></li>
+        <p ng-show = "is.classInfo.students.length !=0&& is.classInfo" class = "instructions">Click on each student's name to ready your reports <em>or</em> add more students.</p></li>
 
-      <li class="collection-item center" ng-style="myStyle" ng-click="is.editStudent(student)" ng-repeat="student in is.studentList.students track by $index"><p class = "textColor" ng-click="myStyle={'background-color':'#00B4FF'}">{{student.name}}</p></li>
+      <li class="collection-item center"  ng-click="is.editStudent(student)" ng-repeat="student in is.studentList.students track by $index" ng-style="student.markAs"><p class = "textColor" ng-click="student.markAs={'background-color':'#00B4FF'}">{{student.name}}</p></li>
       <li class = "center">
-        <a class="waves-effect waves-light btn" ng-click="is.startAddNewStudent()" ng-show="!is.addingStudent">Add Student</a>
+        <a class="waves-effect waves-light btn" ng-click="is.startAddNewStudent()" ng-show="!is.addingStudent && is.classInfo">Add Student</a>
       </li>
       <li ng-if="is.addingStudent">
         <div class = "input-field">
@@ -29,6 +29,6 @@
   </div>
 
 <div class="col s10">
-  <student ng-show="is.currentStudent" student-Info='is.currentStudent'></student>
+  <student ng-show="is.currentStudent && is.showStudent" student-Info='is.currentStudent'></student>
 </div>
 </div>
