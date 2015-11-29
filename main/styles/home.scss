@@ -1,6 +1,4 @@
-html, body {
 
-}
 
 // choice 1
 $darkAccent: #515151;
@@ -9,13 +7,27 @@ $colorAccent: #00B4FF;
 $greyAccent: #EEEEEE;
 $redAccent: #FF3100;
 $yellowAccent: #FFB700;
+.classesTitle {
+	border-bottom: medium solid $darkAccent
+}
+.instructions{
+	color: $redAccent;
 
-
+}
+.accentText {
+	color: $colorAccent;
+}
+.redText{
+	color: $redAccent;
+}
+.edited {
+	background-color: $colorAccent;
+}
 .whiteText {
 	color: $whiteAccent;
 }
 .colorAccent {
-	background-color: $colorAccent
+	background-color: $colorAccent;
 }
 .darkAccent {
 	background-color: $darkAccent;
@@ -29,6 +41,11 @@ $yellowAccent: #FFB700;
 .textColor {
 
 color: $darkAccent;
+}
+
+.boxOfAtt{
+height: 50px;
+
 }
 .parallexText {
 	position: absolute;

@@ -2,25 +2,30 @@
   <div class="col s12">
     <div class="container">
       <div class="row">
-        <div class="col s4">
-          <a class="btn-floating btn-small waves-effect waves-light colorAccent" ng-click="is.startAdding()" ng-show="!is.addingAClass">
-            <i class="material-icons">add</i>
-          </a>
-          <input id="icon_prefix" class = "flow-text" ng-model="newClassName" ng-show="is.addingAClass" type="text"/>
-          <label class="flow-text" for="icon_prefix" ng-show="is.addingAClass">Class Name</label>
-        </div>
-
-        <div class="col s8">
-
-          <a class="btn-large waves-effect waves-light" ng-click="is.doneAdding(newClassName)" ng-show="is.addingAClass && is.newClassName">Add</a>
-          <a class="waves-effect waves-light btn" ng-repeat="part in is.classStore" ng-show="!is.addingAClass" ng-click="is.selectClass(part)" >{{part.className}}</a>
+        <div class="col s12 ">
+          <div class="classesButtonContainer input-field col s12">
+            <div class = "classesTitle center"><h4>Classes</h4></div>
+            <p ng-show ="is.classStore.length == 0" class = "instructions">Looks like you need to add a class. Classes are containers for groups of students.</p>
+            <a class="waves-effect waves-light btn" ng-repeat="part in is.classStore track by $index" ng-show="!is.addingAClass" ng-click="is.selectClass(part)" >{{part.className}}</a>
+          </div>
 
         </div>
+<div class = "col s12">
+          <div class = "input-field">
+              <a class="waves-effect waves-light btn colorAccent" ng-click="is.startAdding()" ng-show="!is.addingAClass">Add A Class</a>
+
+            <input id="icon_prefix" class = "flow-text" ng-model="newClassName" ng-show="is.addingAClass" type="text"/>
+            <label class="flow-text" for="icon_prefix" ng-show="is.addingAClass">Class Name</label>
+
+          <a class="btn-large waves-effect waves-light colorAccent" ng-click="is.doneAdding(newClassName)" ng-show="is.addingAClass && newClassName">Add</a>
+        </div>
+
       </div>
     </div>
   </div>
+
   <div class="col s12">
-    <student-list class-Info="{name: 'gay practice',students:[{name:'joe'}]}"></student-list>
+    <student-list class-Info="is.classInfo"></student-list>
   </div>
 
 </div>

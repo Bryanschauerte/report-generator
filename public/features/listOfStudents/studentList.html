@@ -1,21 +1,29 @@
 <div class="row">
-  <div class="whiteAccent col s2">
-    <h4>Class Info</h4>
+  <div class="whiteAccent boxOfAtt col s2 center-align">
+    <h4 ng-show="is.classInfo">{{is.classInfo.className}}</h4>
+    <h5 ng-show="!is.classInfo" class="instructions">Select a Class or <em>Create</em> a new one</h5>
 
     <ul class="collection">
-      <li class="collection-item" ng-click="is.editStudent(student)" ng-repeat="student in is.studentList.students">{{student.name}}</li>
-      <li>
-        <a class="waves-effect waves-light btn" ng-click="is.startAddNewStudent()" ng-show="!is.addingStudent">Add a New Student</a>
+      <li class="collection-item center">
+        <p ng-show="is.classInfo.students.length ==0" class="instructions"> Click below on 'Add Student'</p></li>
+        <p ng-show="is.classInfo.students.length !=0">Click on each student's name to ready your reports</p>
+
+      <li class="collection-item center" ng-style="myStyle" ng-click="is.editStudent(student)" ng-repeat="student in is.studentList.students track by $index"><p class="textColor" ng-click="myStyle={'background-color':'#00B4FF'}">{{student.name}}</p></li>
+      <li class="center">
+        <a class="waves-effect waves-light btn" ng-click="is.startAddNewStudent()" ng-show="!is.addingStudent">Add Student</a>
       </li>
-      <li ng-if="is.addingStudent">New Student name:
-        <input ng-model="is.newStudent.name" type="text">
+      <li ng-if="is.addingStudent">
+        <div class="input-field">
+        <input id="icon_prefix" ng-model="is.newStudent.name" type="text">
+        <label class="flow-text" for="icon_prefix">Student's name:</label>
+      </div>
         <select class="browser-default" ng-class="{'redBackground': (!is.newStudent.gender)}" ng-model="is.newStudent.gender">
           <option disabled="disabled" selected="selected" value="">Gender</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
         <a class="colorAccent waves-effect waves-light btn" ng-click="is.endAddNewStudent(is.newStudent)" ng-if="is.addingStudent && is.newStudent.gender && is.newStudent.name">Add!</a>
-        <a class="redBackground waves-effect waves-light btn" ng-click="is.addNewStudent()" ng-if="is.addingStudent">Cancel</a>
+        <a class="redBackground waves-effect waves-light btn" ng-click="is.cancelAdd()" ng-if="is.addingStudent">Cancel</a>
       </li>
     </ul>
   </div>
