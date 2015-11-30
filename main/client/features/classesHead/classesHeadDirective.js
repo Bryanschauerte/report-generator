@@ -10,7 +10,8 @@ angular.module('reportGenerator').directive('classHead', function(){
 
     scope: {
       classes: '=',
-      showStudent: "="
+      showStudent: "=",
+      showReports: "="
     }
   }
 

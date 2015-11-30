@@ -18,6 +18,7 @@
             <label class="flow-text" for="icon_prefix" ng-show="is.addingAClass">Class Name</label>
 
           <a class="btn-large waves-effect waves-light colorAccent" ng-click="is.doneAdding(newClassName)" ng-show="is.addingAClass && newClassName">Add</a>
+          <a class="btn-large waves-effect waves-light redBackground" ng-click="is.cancelAddingClass()" ng-show="is.addingAClass">Cancel</a>
         </div>
 
       </div>
@@ -25,7 +26,7 @@
   </div>
 
   <div class="col s12">
-    <student-list show-student="is.showStudent" class-info="is.classInfo"></student-list>
+    <student-list show-student="is.showStudent" show-reports="is.showReports" class-info="is.classInfo"></student-list>
   </div>
 
 </div></div>

@@ -1,19 +1,20 @@
 import mongoose from 'mongoose';
 
 const StudentGroup = mongoose.Schema({
-	groupName: { type: String, required: true },
+	className: { type: String, required: true },
 	students: [{
 		name: { type: String, required: true },
-		age: Number,
 		gender: { type: String, required: true },
-		grades: {
-			participation: String,
-			readingComp: String,
-			verbalComp: String,
-			readingAbility: String,
-			behavior: String,
-			pronunciation: String
-		}
+
+			participation: {type: String},
+			pronuncation: {type: String},
+			readingAbility: {type: String},
+			readingComprehension: {type: String},
+			speakingAbility: {type: String},
+			speakingAbilityVocabulary: {type: String},
+			vocabularyTests: {type: String},
+			behavior: {type: String}
+
 	}
 	]
 });

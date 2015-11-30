@@ -58,11 +58,12 @@ app.put('/api/user/remove-group/:userId/:groupId', userCtrl.removeGroup);
 //GROUP//
 /////////
 
-app.post('/api/groups/', groupCtrl.addGroup);
-app.put('/api/groups/add-student/:groupId', groupCtrl.addStudent);
+app.post('/api/newClass/', groupCtrl.addGroup);
+app.put('/api/groups/newStudent', groupCtrl.addStudent);
 app.put('/api/groups/remove-student/:groupId/:studentId', groupCtrl.removeStudent);
 app.delete('/api/groups/:groupId', groupCtrl.deleteGroup);
-app.put('/api/groups/update-grade/:groupId/:studentId', groupCtrl.updateGrades);
+
+app.put('/api/groups/update-grade/', groupCtrl.updateGrades);
 
 
 app.listen(port, function() {

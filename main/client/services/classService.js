@@ -3,7 +3,7 @@ angular.module("reportGenerator").service("classService", function($http){
 
 this.newClassToAdd = function(newClassName){
   return $http({
-    method: "PUT",
+    method: "POST",
     url: "/api/newClass",
     data: {
       className: newClassName
@@ -13,7 +13,7 @@ this.newClassToAdd = function(newClassName){
 this.newStudentToAdd = function(newStudent){
   return $http({
     method: "PUT",
-    url:"/api/newStudent",
+    url:"/api/groups/newStudent",
     data: {
       newStudent: newStudent
     }
@@ -28,12 +28,11 @@ this.getClassInfo = function(){
 
 },
 this.changeAttribute = function(student){
+
   return $http({
-    method: "POST",
-    url: "/api/changeStudentAtt",
-    data: {
-      student: student
-    }
+    method: "PUT",
+    url: "/api/groups/update-grade/",
+    data: student
   })
 }
 

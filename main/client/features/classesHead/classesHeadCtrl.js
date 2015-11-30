@@ -7,6 +7,7 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
       for (var i = 0; i < self.classes.lenght; i++) {
         self.classStore.push(self.classes[i]);
       }
+      self.classes = self.classStore;
     }
   }
 
@@ -17,12 +18,12 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
   });
 
   $scope.$watch('is.showStudent', function(newValue, oldValue) {
-    console.log('change');
-  });
-  this.startAdding = function() {
-    console.log(self.showStudent, "should showStudent")
-    self.showStudent = false;
 
+  });
+
+  this.startAdding = function() {
+    self.showReports = false;
+    self.showStudent = false;
     self.newClassName = '';
     self.addingAClass = !self.addingAClass;
   }
@@ -37,19 +38,27 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
     if(newName){
       var classInfo = {className: className, students:[]}
       className ='';
-      classService.newClassToAdd(classInfo);
-      self.classStore.push(classInfo);
+      classService.newClassToAdd(classInfo).then(function(response, err){
+        self.classInfo = response.data;
+        self.classStore.push(response.data);
+      });
+
       self.addingAClass = !self.addingAClass;
 }
 else if(!newName){
   alert("Only new class names allowed")
 }
-  self.selectClass(classInfo);
+  self.selectClass(self.classInfo);
   };
 
   this.selectClass = function(classPart) {
     self.classInfo = classPart;
-  }
+    self.showStudent = false;
+    self.showReports = false;
 
+  }
+this.cancelAddingClass = function(){
+    self.addingAClass = !self.addingAClass;
+}
 
 })

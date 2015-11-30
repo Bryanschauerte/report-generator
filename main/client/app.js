@@ -13,5 +13,9 @@ angular.module('reportGenerator', ['ui.router'])
 		url: '/myClasses',
 		template: "<my-Classes></my-Classes>"
 	})
+	.state('myAccount', {
+		url: '/myAccount',
+		template: "<my-Account></my-Account>"
+	})
 
 });
