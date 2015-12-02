@@ -9,7 +9,7 @@
           <div class="input-field col s5" ng-init="is.doIt()">
             <input class="flow-text" id="icon_prefix" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.name" type="text">
             <label class="flow-text" for="icon_prefix" ng-show="!is.student.name">Name</label>
-            <!-- <p class="flow-text">Gender</p> -->
+
           </div>
           <div class="col s3">
             <select class="genderBox browser-default" ng-change="is.changeStudentAtt(is.student)" ng-class="{'redBackground': (!is.student.gender)}" ng-model="is.student.gender">
@@ -35,7 +35,7 @@
     <div class="col s12 attRow">
 
       <div class="col s3" ng-init="is.doIt()">
-        <p class="flow-text center">Reading Ability</p>
+        <p class="center textColor">Reading Ability</p>
         <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.readingAbility">
           <option disabled selected value="">Option</option>
           <option value="Excellent">Excellent</option>
@@ -47,7 +47,7 @@
       </div>
 
       <div class="col s3">
-        <p class="flow-text center">Vocabulary Tests</p>
+        <p class="center textColor">Vocabulary Tests</p>
         <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.vocabularyTests">
           <option class="flow-text" disabled selected value="">Option</option>
           <option value="Excellent">Excellent</option>
@@ -59,7 +59,7 @@
       </div>
 
       <div class=" col s3">
-        <p class="flow-text center">Speaking Ability</p>
+        <p class="center textColor">Speaking Ability</p>
         <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.speakingAbility">
           <option class="flow-text" disabled selected value="">Option</option>
           <option value="Excellent">Excellent</option>
@@ -71,7 +71,7 @@
       </div>
 
       <div class="col s3">
-        <p class="flow-text center">Behavior</p>
+        <p class="center textColor">Behavior</p>
         <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.behavior">
           <option class="flow-text" disabled selected value="">Option</option>
           <option value="Excellent">Excellent</option>
@@ -87,7 +87,7 @@
   <div class="row">
 
     <div class="col s3">
-      <p class="flow-text center">Reading Comprehension</p>
+      <p class="center textColor">Reading Comprehension</p>
       <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.readingComprehension">
         <option class="flow-text" disabled selected value="">Option</option>
         <option value="Excellent">Excellent</option>
@@ -99,7 +99,7 @@
     </div>
 
     <div class="col s3">
-      <p class="flow-text center">Speaking Vocabulary</p>
+      <p class="center textColor">Speaking Vocabulary</p>
       <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.speakingAbilityVocabulary">
         <option class="flow-text" disabled selected value="">Option</option>
         <option value="Excellent">Excellent</option>
@@ -111,7 +111,7 @@
     </div>
 
     <div class="col s3">
-      <p class="flow-text center">Participation in Class</p>
+      <p class=" center textColor">Participation in Class</p>
       <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.participation">
         <option disabled selected value="">Option</option>
         <option value="Excellent">Excellent</option>
@@ -123,7 +123,7 @@
     </div>
 
     <div class="col s3">
-      <p class="flow-text center">Pronuncation in Class</p>
+      <p class="center textColor">Pronuncation in Class</p>
       <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.pronuncation">
         <option disabled selected value="">Option</option>
         <option value="Excellent">Excellent</option>
@@ -134,4 +134,5 @@
 
     </div>
   </div>
+
 </div>

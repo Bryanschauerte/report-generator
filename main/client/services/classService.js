@@ -8,7 +8,14 @@ this.newClassToAdd = function(newClassName){
     data: {
       className: newClassName
     }
-  })
+  });
+},
+
+this.removeClass = function(groupId){
+  return $http({
+    method: "DELETE",
+    url: "/api/groups/" + groupId
+  });
 },
 this.newStudentToAdd = function(newStudent){
   return $http({
@@ -17,15 +24,21 @@ this.newStudentToAdd = function(newStudent){
     data: {
       newStudent: newStudent
     }
-  })
+  });
 },
 this.getClassInfo = function(){
   return $http({
     method: "GET",
-    url: "/api/get",
-    data: ""
-  })
+    url: "/api/get"
+  });
 
+},
+
+this.deleteStudent = function(classId, studentId){
+  return $http({
+    method:"DELETE",
+    url:"/api/groups/remove-student/" + classId + "/" + studentId
+  });
 },
 this.changeAttribute = function(student){
 
@@ -33,7 +46,7 @@ this.changeAttribute = function(student){
     method: "PUT",
     url: "/api/groups/update-grade/",
     data: student
-  })
+  });
 }
 
-})
+});

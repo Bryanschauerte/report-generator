@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="whiteAccent boxOfAtt col s2 center-align">
+  <div class=" boxOfAtt col s2 center-align">
     <h4 ng-show = "is.classInfo">{{is.classInfo.className}}</h4>
     <h5 ng-show = "!is.classInfo" class = "instructions">Select a class or <em>add</em> a new one</h5>
 
@@ -25,6 +25,11 @@
         <a class=" colorAccent waves-effect waves-light extraWidth btn" ng-click="is.endAddNewStudent(is.newStudent)" ng-if="is.addingStudent && is.newStudent.gender && is.newStudent.name">Add!</a>
         <a class="redBackground waves-effect waves-light extraWidth btn" ng-click="is.cancelAdd()" ng-if="is.addingStudent">Cancel</a>
       </li>
+
+
+
+
+
       <li ng-show = "is.showCompileStuff"><p class = "instructions">Below is the compile button. When you are done with each student(green means go!), press the button to get a list of each student and a randomly generated report based on their perfomance.</p></li>
       <li ng-show = "is.showCompileStuff">
           <a class="colorAccent waves-effect waves-light extraWidth btn" ng-click="is.doReports(is.studentList)">Compile Reports!</a>
@@ -32,8 +37,9 @@
     </ul>
   </div>
 
-<div class="col s10">
+<div class="greyAccent col s10">
   <student ng-show="is.currentStudent && is.showStudent" show-reports = "is.showReports" student-Info='is.currentStudent'  class-Info="is.classInfo"></student>
+  <a class="btn-large waves-effect waves-light redBackground" ng-show = "is.currentStudent && is.showStudent" ng-click="is.deleteStudent(is.currentStudent.classId, is.currentStudent._id)">Delete this Student</a>
   <report show-reports = "is.showReports" ng-show="is.showReports && !is.showStudent"></report>
 </div>
 </div>

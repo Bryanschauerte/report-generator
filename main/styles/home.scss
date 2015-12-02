@@ -9,8 +9,12 @@ $redAccent: #FF3100;
 $yellowAccent: #FFB700;
 $greenAccent: #00FF67;
 
+.greenBackground {
+	background-color: $greenAccent;
+
+}
 .classesTitle {
-	border-bottom: medium solid $darkAccent
+	border-bottom: medium solid $darkAccent;
 }
 .doneButton {
 	position: absolute;

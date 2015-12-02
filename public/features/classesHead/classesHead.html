@@ -3,16 +3,22 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
+
           <div class="classesButtonContainer input-field col s12">
             <div class="classesTitle center"><h4>Classes</h4></div>
             <p ng-show="is.classStore.length == 0" class="instructions">Looks like you need to add a class. Classes are containers for groups of students.</p>
-            <a class="waves-effect waves-light btn" ng-repeat="part in is.classStore track by $index" ng-show="!is.addingAClass" ng-click="is.selectClass(part)">{{part.className}}</a>
+            <a class="waves-effect waves-light btn" ng-repeat="part in is.classStore track by $index" ng-show="!is.addingAClass && !is.removingClass" ng-click="is.selectClass(part)">{{part.className}}</a>
+
+            <a class="waves-effect waves-light redBackground btn" ng-repeat="part in is.classStore track by $index" ng-show="!is.addingAClass && is.removingClass" ng-click="is.removeClass(part)">Remove {{part.className}}</a>
           </div>
 
         </div>
 <div class="col s12">
           <div class="input-field">
-              <a class="waves-effect waves-light btn colorAccent" ng-click="is.startAdding()" ng-show="!is.addingAClass">Add A Class</a>
+              <a class="waves-effect waves-light btn colorAccent" ng-click="is.startAdding()" ng-show="!is.addingAClass && !is.removingClass">Add A Class</a>
+
+              <a class="waves-effect waves-light redBackground btn" ng-show="!is.addingAClass && (is.classStore.length != 0) && !is.removingClass" ng-click="is.startRemoveClass()">Remove Classes</a>
+              <a class="waves-effect waves-light greenBackground btn" ng-show="is.removingClass" ng-click="is.endRemovingClass()">Done Removing</a>
 
             <input id="icon_prefix" class="flow-text" ng-model="newClassName" ng-show="is.addingAClass" type="text">
             <label class="flow-text" for="icon_prefix" ng-show="is.addingAClass">Class Name</label>

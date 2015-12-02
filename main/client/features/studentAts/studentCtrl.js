@@ -4,27 +4,24 @@ angular.module('reportGenerator').controller('studentCtrl', function($scope, cla
   this.student = self.studentInfo;
 
   this.changeStudentAtt = function(student) {
-
-
     var clasId = self.classInfo._id;
     student.classId = clasId;
-    console.log(student)
-
     classService.changeAttribute(student);
-  }
+  };
 
   this.doneDoing = function(student) {
     self.student.markAs = {
       'background-color': '#00FF67'
     };
     self.studentInfo = student;
-  }
+  };
+
   this.notDoneDoing = function(student) {
     student.markAs = {
       'background-color': '#FF3100'
     };
     self.studentInfo = student;
-  }
+  };
 
   $scope.$watch('is.studentInfo', function(newValue, oldValue) {
     self.student = self.studentInfo;
@@ -32,6 +29,7 @@ angular.module('reportGenerator').controller('studentCtrl', function($scope, cla
 
   this.doIt = function() {
     $('select').material_select();
-  }
+  };
 
-})
+
+});
