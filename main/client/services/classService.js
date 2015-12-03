@@ -50,8 +50,9 @@ this.changeAttribute = function(student){
 },
 
 this.compileReports = function(classObject){
+
   return $http({
-    method: "get",
+    method: "PUT",
     url: "/api/group/makeClassReports",
     data: classObject
   })

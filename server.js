@@ -64,7 +64,7 @@ app.put('/api/groups/newStudent', groupCtrl.addStudent);
 app.delete('/api/groups/remove-student/:groupId/:studentId', groupCtrl.removeStudent);
 app.delete('/api/groups/:groupId', groupCtrl.deleteGroup);
 
-app.get('/api/group/makeClassReports', reportsCtrl.doReports);
+app.put('/api/group/makeClassReports', reportsCtrl.doReports);
 
 app.put('/api/groups/update-grade/', groupCtrl.updateGrades);
 

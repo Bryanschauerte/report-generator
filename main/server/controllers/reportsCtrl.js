@@ -3,6 +3,7 @@ module.exports = {
 
 
 doReports(req, res){
+
     var badBehavior = {
       1: "He needs to focus more in class and follow directions better.",
       2: "He needs to do a better job of following directions and being respectful of others.",
@@ -394,7 +395,7 @@ doReports(req, res){
 
 
 
-  this.getVocabularyTest = function(level){
+  function getVocabularyTest(level){
     var randomNum = getRandomNumber();
     var vocabularyTestSentence = " ";
     if(level != "N/A"){
@@ -420,52 +421,53 @@ doReports(req, res){
 
 
 
-  var putTogetherReport = function(req, res){
+  function putTogetherReport(){
+
     var students = req.body.students;
     var combine = "";
     var classReports= {};
-    classReports.className = req.body.classObject.className;
+    classReports.className = req.body.className;
     classReports.students = [];
-
+console.log(students, "students in server")
 for(var i = 0; i < students.length; i++){
 
   var combine = "";
-  var report = {name: students[i], report: student[i].name + ": "};
+  var report = {name: students[i], report: students[i].name + ": "};
 
-    for(var crit in student[i]){
+    for(var crit in students[i]){
 
       switch(crit){
         case ('readingAbility'):
-        report.report += getReadingAbility(student[crit]);
+        report.report += getReadingAbility(students[i][crit]);
         break;
 
         case ('vocabularyTests'):
-        report.report += getVocabularyTest(student[crit]);
+        report.report += getVocabularyTest(students[i][crit]);
         break;
 
         case ('speakingAbility'):
-        report.report += getSpeakingAbility(student[crit]);
+        report.report += getSpeakingAbility(students[i][crit]);
         break;
 
         case ('readingComprehension'):
-        report.report += getReadingComprehension(student[crit]);
+        report.report += getReadingComprehension(students[i][crit]);
         break;
 
         case ('participation'):
-        report.report += getParticipation(student[crit]);
+        report.report += getParticipation(students[i][crit]);
         break;
 
         case ('verbalComprehension'):
-        report.report += getVerbalComprehension(student[crit]);
+        report.report += getVerbalComprehension(students[i][crit]);
         break;
 
         case ('behavior'):
-        report.report += getBehavior(student[crit]);
+        report.report += getBehavior(students[i][crit]);
         break;
 
 
         case ('pronunciation'):
-        report.report += getPronunciation(student[crit]);
+        report.report += getPronunciation(students[i][crit]);
         break;
 
         // case ('name'):
@@ -473,9 +475,10 @@ for(var i = 0; i < students.length; i++){
         // break;
 
     }
+
 }
 
-  if(student[i].gender === "female"){
+  if(students[i].gender === "female"){
 
   var herText = report.report.replace(/\bhis?\b/g, "her");
 
@@ -490,28 +493,34 @@ for(var i = 0; i < students.length; i++){
 
 
   //make it a bit more personal sounding
-  if(student.gender === "female"){
+  if(students[i] === "female"){
 
-    var herShe = report.report.replace(/\bShe?\b/, student.name);
+    var herShe = report.report.replace(/\bShe?\b/, students[i].name);
 
-    var herChange = herShe.replace(/\bHer?\b/g, student.name + "'s");
+    var herChange = herShe.replace(/\bHer?\b/g, students[i].name + "'s");
 
-    return herChange;
+    report.report = herChange;
   }
 
-  if(student.gender === "male"){
 
-    var himChange = report.report.replace(/\bHe?\b/, student.name);
+  if(students[i].gender === "male"){
 
-    var lastMale = himChange.replace(/\bHis?\b/g, student.name + "'s");
+    var himChange = report.report.replace(/\bHe?\b/, students[i].name);
 
-    return lastMale;
+    var lastMale = himChange.replace(/\bHis?\b/g, students[i].name + "'s");
+
+    report.report = lastMale;
   }
+
+
 classReports.students.push(report)
 
+
   }
+  console.log(classReports, "class reports ready to send")
   res.send(classReports);
-}()
+}
+putTogetherReport()
 
 }
 }

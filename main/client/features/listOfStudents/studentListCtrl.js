@@ -6,11 +6,15 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
 
   this.doReports = function(studentList) {
     self.showStudent = false;
-    console.log(studentList)
+
     classService.compileReports(studentList).then(function(response, err){
+      console.log(response, "reponse from server")
+      self.reports = response.data;
+      console.log(self.reports, "reports after server")
           self.showReports = true;
     })
-    self.showReports = true;
+    // self.showReports = true;
+    console.log(self.reports, "the waiting")
 
   };
   this.editStudent = function(student) {
