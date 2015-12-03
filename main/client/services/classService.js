@@ -47,6 +47,14 @@ this.changeAttribute = function(student){
     url: "/api/groups/update-grade/",
     data: student
   });
+},
+
+this.compileReports = function(classObject){
+  return $http({
+    method: "get",
+    url: "/api/group/makeClassReports",
+    data: classObject
+  })
 }
 
 });

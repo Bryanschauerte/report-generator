@@ -6,6 +6,10 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
 
   this.doReports = function(studentList) {
     self.showStudent = false;
+    console.log(studentList)
+    classService.compileReports(studentList).then(function(response, err){
+          self.showReports = true;
+    })
     self.showReports = true;
 
   };

@@ -8,6 +8,7 @@ var   express = require('express')
 	, userCtrl = require('./server/controllers/userCtrl')
 	, groupCtrl = require('./server/controllers/groupCtrl')
 	, authCtrl = require('./server/controllers/authCtrl')
+	, reportsCtrl = require('./server/controllers/reportsCtrl')
 	, config = require('./server/config/configAuth')
 	, port = 9090
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
@@ -62,6 +63,8 @@ app.post('/api/newClass/', groupCtrl.addGroup);
 app.put('/api/groups/newStudent', groupCtrl.addStudent);
 app.delete('/api/groups/remove-student/:groupId/:studentId', groupCtrl.removeStudent);
 app.delete('/api/groups/:groupId', groupCtrl.deleteGroup);
+
+app.get('/api/group/makeClassReports', reportsCtrl.doReports);
 
 app.put('/api/groups/update-grade/', groupCtrl.updateGrades);
 
