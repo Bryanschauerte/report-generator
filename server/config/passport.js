@@ -8,9 +8,9 @@ var _User = require('../models/User');
 
 var _User2 = _interopRequireDefault(_User);
 
-var _configAuth = require('./configAuth');
+var _auth = require('./auth');
 
-var _configAuth2 = _interopRequireDefault(_configAuth);
+var _auth2 = _interopRequireDefault(_auth);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,9 +31,9 @@ module.exports = function (passport) {
 
 	passport.use(new _passportFacebook.Strategy({
 
-		clientID: _configAuth2.default.facebookAuth.clientID,
-		clientSecret: _configAuth2.default.facebookAuth.clientSecret,
-		callbackURL: _configAuth2.default.facebookAuth.callbackURL,
+		clientID: _auth2.default.facebookAuth.clientID,
+		clientSecret: _auth2.default.facebookAuth.clientSecret,
+		callbackURL: _auth2.default.facebookAuth.callbackURL,
 		profileFields: ['id', 'emails', 'name']
 
 	}, function (token, refreshToken, profile, done) {
@@ -69,9 +69,9 @@ module.exports = function (passport) {
 
 	passport.use(new _passportGoogleOauth.Strategy({
 
-		clientID: _configAuth2.default.googleAuth.clientID,
-		clientSecret: _configAuth2.default.googleAuth.clientSecret,
-		callbackURL: _configAuth2.default.googleAuth.callbackURL
+		clientID: _auth2.default.googleAuth.clientID,
+		clientSecret: _auth2.default.googleAuth.clientSecret,
+		callbackURL: _auth2.default.googleAuth.callbackURL
 
 	}, function (token, refreshToken, profile, done) {
 		process.nextTick(function () {

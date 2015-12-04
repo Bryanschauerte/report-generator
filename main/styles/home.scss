@@ -8,6 +8,33 @@ $greyAccent: #EEEEEE;
 $redAccent: #FF3100;
 $yellowAccent: #FFB700;
 $greenAccent: #00FF67;
+$googleBlue: #4285F4;
+.price {
+	font-weight: bolder;
+	color: $yellowAccent;
+
+}
+.topBar {
+	background-color: $colorAccent;
+	border-bottom: 4px solid $darkAccent;
+	padding: 2%;
+	margin-top: 2%;
+}
+.planInfo {
+	background-color: $darkAccent;
+}
+.accountTitle{
+	color: $whiteAccent;
+	font-weight: bolder;
+}
+.facebookIcon {
+	height: 100%;
+
+}
+.googleButton {
+	width: auto;
+
+}
 
 .greenBackground {
 	background-color: $greenAccent;
@@ -25,7 +52,14 @@ $greenAccent: #00FF67;
 .redBackground {
 	background-color: $redAccent;
 }
-.extraWidth{
+// .relativeParent {
+// 	position: relative;
+// }
+// .relativeChilde {
+// 	position: absolute;
+//
+// }
+.extraWidth {
 	width: 100%;
 }
 .studentAttContainer{
@@ -35,8 +69,7 @@ $greenAccent: #00FF67;
 	color: $redAccent;
 
 }
-.attRow {
-}
+
 .accentText {
 	color: $colorAccent;
 }
@@ -90,7 +123,6 @@ height: 50px;
 	}
 
 }
-
 .landingPageContentBoarder {
 	background-color: $colorAccent;
 	display: flex;
