@@ -1,3 +1,231 @@
-html, body {
-	background-color: blue;
+
+
+// choice 1
+$darkAccent: #515151;
+$whiteAccent: #FFFFFF;
+$colorAccent: #00B4FF;
+$greyAccent: #EEEEEE;
+$redAccent: #FF3100;
+$yellowAccent: #FFB700;
+$greenAccent: #00FF67;
+
+.greenBackground {
+	background-color: $greenAccent;
+
+}
+.classesTitle {
+	border-bottom: medium solid $darkAccent;
+}
+.doneButton {
+	position: absolute;
+	top:0px;
+	right:0px;
+	width:30%;
+}
+.redBackground {
+	background-color: $redAccent;
+}
+.extraWidth{
+	width: 100%;
+}
+.studentAttContainer{
+	position: relative;
+}
+.instructions{
+	color: $redAccent;
+
+}
+.attRow {
+}
+.accentText {
+	color: $colorAccent;
+}
+.redText{
+	color: $redAccent;
+}
+.edited {
+	background-color: $colorAccent;
+}
+.whiteText {
+	color: $whiteAccent;
+}
+.colorAccent {
+	background-color: $colorAccent;
+}
+.darkAccent {
+	background-color: $darkAccent;
+}
+.greyAccent {
+	background-color: $greyAccent;
+}
+.whiteAccent{
+	background-color: $whiteAccent;
+}
+.textColor {
+
+color: $darkAccent;
+}
+
+.boxOfAtt{
+height: 50px;
+
+}
+.parallexText {
+	position: absolute;
+	top: 70%;
+	left: 5%;
+
+}
+
+.navBar {
+	height: 10%;
+	background-color: $greyAccent;
+
+}
+.parallax-container {
+	z-index: 0;
+	background-size: contain;
+	img {
+		height:1000px;
+	}
+
+}
+
+.landingPageContentBoarder {
+	background-color: $colorAccent;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 10%;
+	width: 100%;
+}
+.landPageBottomElements{
+	background-color: $greyAccent;
+
+
+}
+.studentContainer{
+	display: flex;
+	align-items: center;
+}
+.genderBox {
+position: absolute;
+top: 45%;
+
+}
+.redBackground {
+	background-color: $redAccent;
+}
+.inputNameGender {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.rotating {
+  display: inline-block;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+  -moz-transform: rotateX(0) rotateY(0) rotateZ(0);
+  -ms-transform: rotateX(0) rotateY(0) rotateZ(0);
+  -o-transform: rotateX(0) rotateY(0) rotateZ(0);
+  transform: rotateX(0) rotateY(0) rotateZ(0);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-transform-origin-x: 50%;
+}
+
+.rotating.flip {
+  position: relative;
+}
+
+.rotating .front, .rotating .back {
+  left: 0;
+  top: 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.rotating .front {
+  position: absolute;
+  display: inline-block;
+  -webkit-transform: translate3d(0,0,1px);
+  -moz-transform: translate3d(0,0,1px);
+  -ms-transform: translate3d(0,0,1px);
+  -o-transform: translate3d(0,0,1px);
+  transform: translate3d(0,0,1px);
+}
+
+.rotating.flip .front {
+  z-index: 1;
+}
+
+.rotating .back {
+  display: block;
+  opacity: 0;
+}
+
+.rotating.spin {
+  -webkit-transform: rotate(360deg) scale(0);
+  -moz-transform: rotate(360deg) scale(0);
+  -ms-transform: rotate(360deg) scale(0);
+  -o-transform: rotate(360deg) scale(0);
+  transform: rotate(360deg) scale(0);
+}
+
+
+
+.rotating.flip .back {
+  z-index: 2;
+  display: block;
+  opacity: 1;
+
+  -webkit-transform: rotateY(180deg) translate3d(0,0,0);
+  -moz-transform: rotateY(180deg) translate3d(0,0,0);
+  -ms-transform: rotateY(180deg) translate3d(0,0,0);
+  -o-transform: rotateY(180deg) translate3d(0,0,0);
+  transform: rotateY(180deg) translate3d(0,0,0);
+}
+
+.rotating.flip.up .back {
+  -webkit-transform: rotateX(180deg) translate3d(0,0,0);
+  -moz-transform: rotateX(180deg) translate3d(0,0,0);
+  -ms-transform: rotateX(180deg) translate3d(0,0,0);
+  -o-transform: rotateX(180deg) translate3d(0,0,0);
+  transform: rotateX(180deg) translate3d(0,0,0);
+}
+
+.rotating.flip.cube .front {
+  -webkit-transform: translate3d(0,0,100px) scale(0.9,0.9);
+  -moz-transform: translate3d(0,0,100px) scale(0.85,0.85);
+  -ms-transform: translate3d(0,0,100px) scale(0.85,0.85);
+  -o-transform: translate3d(0,0,100px) scale(0.85,0.85);
+  transform: translate3d(0,0,100px) scale(0.85,0.85);
+}
+
+.rotating.flip.cube .back {
+  -webkit-transform: rotateY(180deg) translate3d(0,0,100px) scale(0.9,0.9);
+  -moz-transform: rotateY(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  -ms-transform: rotateY(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  -o-transform: rotateY(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  transform: rotateY(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+}
+
+.rotating.flip.cube.up .back {
+  -webkit-transform: rotateX(180deg) translate3d(0,0,100px) scale(0.9,0.9);
+  -moz-transform: rotateX(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  -ms-transform: rotateX(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  -o-transform: rotateX(180deg) translate3d(0,0,100px) scale(0.85,0.85);
+  transform: rotateX(180deg) translate3d(0,0,100px) scale(0.85,0.85);
 }

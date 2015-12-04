@@ -1,0 +1,138 @@
+<div class='column greyAccent studentAttContainer' ng-init="is.doIt()">
+
+  <div class="col s12">
+
+    <div class="row">
+      <div class="col s6">
+
+        <div class="row input-field col s7">
+          <div class="input-field col s5" ng-init="is.doIt()">
+            <input class="flow-text" id="icon_prefix" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.name" type="text">
+            <label class="flow-text" for="icon_prefix" ng-show="!is.student.name">Name</label>
+
+          </div>
+          <div class="col s3">
+            <select class="genderBox browser-default" ng-change="is.changeStudentAtt(is.student)" ng-class="{'redBackground': (!is.student.gender)}" ng-model="is.student.gender">
+              <option disabled selected value="">Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="doneButton">
+        <a class="btn-large waves-effect waves-light extraWidth colorAccent" ng-click="is.doneDoing(is.student)">Mark As Done</a>
+        <a class="btn-large waves-effect waves-light extraWidth redBackground" ng-click="is.notDoneDoing(is.student)">Mark As <em>NOT</em> Done</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col s12 attRow">
+
+      <div class="col s3" ng-init="is.doIt()">
+        <p class="center textColor">Reading Ability</p>
+        <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.readingAbility">
+          <option disabled selected value="">Option</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Fair">Fair</option>
+          <option value="Bad">Bad</option>
+          <option value="Bad">N/A</option>
+        </select>
+
+      </div>
+
+      <div class="col s3">
+        <p class="center textColor">Vocabulary Tests</p>
+        <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.vocabularyTests">
+          <option class="flow-text" disabled selected value="">Option</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Fair">Fair</option>
+          <option value="Bad">Bad</option>
+          <option value="Bad">N/A</option>
+        </select>
+
+      </div>
+
+      <div class=" col s3">
+        <p class="center textColor">Speaking Ability</p>
+        <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.speakingAbility">
+          <option class="flow-text" disabled selected value="">Option</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Fair">Fair</option>
+          <option value="Bad">Bad</option>
+          <option value="Bad">N/A</option>
+        </select>
+
+      </div>
+
+      <div class="col s3">
+        <p class="center textColor">Behavior</p>
+        <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.behavior">
+          <option class="flow-text" disabled selected value="">Option</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Fair">Fair</option>
+          <option value="Bad">Bad</option>
+          <option value="Bad">N/A</option>
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col s3">
+      <p class="center textColor">Reading Comprehension</p>
+      <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.readingComprehension">
+        <option class="flow-text" disabled selected value="">Option</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Fair">Fair</option>
+        <option value="Bad">Bad</option>
+        <option value="Bad">N/A</option>
+      </select>
+
+    </div>
+
+    <div class="col s3">
+      <p class="center textColor">Speaking Vocabulary</p>
+      <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.speakingAbilityVocabulary">
+        <option class="flow-text" disabled selected value="">Option</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Fair">Fair</option>
+        <option value="Bad">Bad</option>
+        <option value="Bad">N/A</option>
+      </select>
+
+    </div>
+
+    <div class="col s3">
+      <p class=" center textColor">Participation in Class</p>
+      <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.participation">
+        <option disabled selected value="">Option</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Fair">Fair</option>
+        <option value="Bad">Bad</option>
+        <option value="Bad">N/A</option>
+      </select>
+
+    </div>
+
+    <div class="col s3">
+      <p class="center textColor">Pronuncation in Class</p>
+      <select class="browser-default" ng-change="is.changeStudentAtt(is.student)" ng-model="is.student.pronuncation">
+        <option disabled selected value="">Option</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Fair">Fair</option>
+        <option value="Bad">Bad</option>
+        <option value="Bad">N/A</option>
+      </select>
+
+    </div>
+  </div>
+
+</div>
