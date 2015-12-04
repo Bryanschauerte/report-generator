@@ -1,7 +1,7 @@
-const 		FacebookStrategy = require('passport-facebook').Strategy
-		,	GoogleStrategy = require('passport-google-oauth2').Strategy
-		,	User = require('../models/User')
-		,	config = require('./configAuth');
+import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
+import { Strategy as FacebookStrategy } from 'passport-facebook';
+import User from '../models/User';
+import config from './configAuth';
 
 module.exports = passport => {
 	passport.serializeUser(( user, done ) => {
@@ -9,7 +9,7 @@ module.exports = passport => {
 	});
 
 	passport.deserializeUser(( id, done ) => {
-		User.findById(id, (err, user) => {
+		User.findById(id, ( err, user ) => {
 			done(err, user);
 		});
 	});
