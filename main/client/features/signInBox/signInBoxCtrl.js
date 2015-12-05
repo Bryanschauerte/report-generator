@@ -1,8 +1,10 @@
-angular.module("reportGenerator").controller('signInBoxCtrl', function() {
+angular.module("reportGenerator").controller('signInBoxCtrl', function($scope) {
 
 var self = this;
 self.user = false;
-this.submitPromoCode = function(promocode){
-  console.log(promocode);
-}
+
+$scope.$watch('is.user', function(newValue, oldValue) {
+
+});
+
 })

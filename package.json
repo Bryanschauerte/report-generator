@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-credit-cards": "^2.3.5",
+    "angular-stripe": "^4.2.8",
+    "angular-stripe-checkout": "^4.0.0",
     "body-parser": "^1.14.1",
     "cors": "^2.7.1",
     "express": "^4.13.3",
@@ -17,7 +21,8 @@
     "mongoose": "^4.2.7",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
-    "passport-google-oauth2": "^0.1.6"
+    "passport-google-oauth2": "^0.1.6",
+    "stripe": "^4.1.0"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.1.18",

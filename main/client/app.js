@@ -1,4 +1,6 @@
-angular.module('reportGenerator', ['ui.router'])
+angular.module('reportGenerator', ['ui.router', "stripe.checkout"])
+
+
 
 .config(function( $stateProvider, $urlRouterProvider ) {
 
