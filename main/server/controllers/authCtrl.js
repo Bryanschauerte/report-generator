@@ -33,7 +33,7 @@ module.exports = {
 		res.send(req.user);
 	},
 
-	isAuth( req, res ) {
+	isAuth( req, res, next ) {
 	    if (req.user){
 	        next();
 	    } else {

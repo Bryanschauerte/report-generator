@@ -39,8 +39,9 @@ module.exports = passport => {
 
 				let newUser = new User();
 
-				newUser.email = profile.emails[0].value;
+				newUser.userEmail = profile.emails[0].value;
 
+				console.log(newUser);
 				newUser.save(( err ) => {
 					if (err) {
 						throw err;

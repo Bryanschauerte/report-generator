@@ -13,7 +13,12 @@ angular.module('reportGenerator', ['ui.router', "stripe.checkout"])
 	})
 	.state('myClasses', {
 		url: '/myClasses',
-		template: "<my-Classes></my-Classes>"
+		template: "<my-Classes></my-Classes>",
+		resolve: {
+			user( authService ) {
+				authService.getAuth();
+			}
+		}
 	})
 	.state('myAccount', {
 		url: '/myAccount',

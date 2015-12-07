@@ -32,7 +32,7 @@ module.exports = {
 	auth: function auth(req, res) {
 		res.send(req.user);
 	},
-	isAuth: function isAuth(req, res) {
+	isAuth: function isAuth(req, res, next) {
 		if (req.user) {
 			next();
 		} else {

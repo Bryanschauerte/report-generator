@@ -50,8 +50,9 @@ module.exports = function (passport) {
 
 				var newUser = new _User2.default();
 
-				newUser.email = profile.emails[0].value;
+				newUser.userEmail = profile.emails[0].value;
 
+				console.log(newUser);
 				newUser.save(function (err) {
 					if (err) {
 						throw err;

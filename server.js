@@ -9,7 +9,7 @@ var   express = require('express')
 	, groupCtrl = require('./server/controllers/groupCtrl')
 	, authCtrl = require('./server/controllers/authCtrl')
 	, reportsCtrl = require('./server/controllers/reportsCtrl')
-	, config = require('./server/config/configAuth')
+	, config = require('./server/config/auth')
 	, stripeCtrl = require('./server/controllers/stripeCtrl')
 	, stripeKeys = require('./server/config/stripeKeys')
 	, stripe = require("stripe")(stripeKeys.test.secretKey)
@@ -37,13 +37,23 @@ mongoose.connection.once('open', function() {
 
 app.get('/auth/logout', authCtrl.logout);
 
-app.get('/auth/facebook', authCtrl.facebook);
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 
-app.get('/auth/facebook/callback', authCtrl.facebookCallback);
+app.get('/auth/facebook/callback', passport.authenticate('facebook'), function( req, res ) {
+	if (!req.user) {
+		return res.status(401).send('not allowed');
+	}
+	res.redirect('/#/myClasses');
+});
 
-app.get('/auth/google', authCtrl.google);
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-app.get('/auth/google/callback', authCtrl.googleCallback);
+app.get('/auth/google/callback', passport.authenticate('google'), function( req, res ) {
+	if (!req.user) {
+		return res.status(401).send('not allowed');
+	}
+	res.redirect('/#/myClasses');
+});
 
 app.get('/auth', authCtrl.isAuth, authCtrl.auth);
 //////
