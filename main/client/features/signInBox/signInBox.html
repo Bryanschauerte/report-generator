@@ -1,1 +1,85 @@
 
+<div class = "col s12">
+  <div class = "topBar">
+    <div class = "introInfo center-align">
+      <h3 ng-show = "is.user" class="accountTitle">Hello, {{user.name}}!</h3>
+      <h3 ng-show = "!is.user" class="accountTitle">Welcome!</h3>
+    </div>
+
+    <div ng-show = "!is.user" class = "center-align"><p>First, Login with FaceBook or Google.</p>
+      <a class="waves-effect waves-light  centerButtonContent btn"  ng-click="" ng-show="!is.addingStudent"><img class = "facebookIcon left-align" src="./assets/FB-f-Logo__blue_1024.png"></a>
+      <a class="waves-effect waves-light googleButton btn"  ng-click="" ng-show="!is.addingStudent"><img src = "./assets/btn_google_signin_light_normal_web.png"></a>
+    </div>
+
+  </div>
+
+
+<div class = "planInfo col s12">
+
+
+  <div class="col s6">
+
+    <!--  -->
+    <div class="row">
+<div class="col s12 fullHeight">
+  <div class="card fullHeight blue-grey darken-1">
+    <div class="card-content white-text">
+      <span class="card-title"><bolder>One Month</bolder></span>
+      <p>Less than the price of a beer... Use the Report Generator as many times as you like. Students and classes will be saved so you have even <em>less</em> work to do next time!</p>
+      <p class = "price flow-text center-align">$5.00 ~ USD</p>
+    </div>
+    <div class="card-action center-align">
+      <one-Month ng-show = "is.user"></one-Month>
+    </div>
+  </div>
+</div>
+</div>
+    <!-- Promo Content 1 goes here -->
+  </div>
+
+  <div class="col s6">
+    <!-- Promo Content 2 goes here -->
+    <div class="row">
+      <div class="col s12 fullHeight">
+        <div class="card  blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">One Year</span>
+            <p>Less than the cost of beer you would have to buy to rid yourself of the stress given by a years worth of reports. This option also allows the unlimited use of the generator and the saving of students/classes.</p>
+            <p class = "price flow-text center-align">$40.00 ~ USD</p>
+          </div>
+          <div class="card-action center-align">
+            <year-Pay ng-show = "is.user"></year-Pay>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+
+</div>
+
+<div>
+<h4 class = "center-align accountTitle">Payments</h4>
+
+</div>
+<!--  -->
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel greyAccent">
+      <span class="textColor">Payments made in other currencies will be affected by currency changes and may incure charges from your bank. All major credit cards accepted. Must be signed in to purchase subscriptions. The Report Generator will use that login for your subscription and class information.</span>
+    </div>
+  </div>
+</div>
+<!--  -->
+
+
+
+</div>
+
+
+  <div ng-show = "is.user" class = "paymentContainer center-align">
+
+  </div>
+  <!-- ng-style = "{'background-image':'url('+'./assets/btn_google_signin_light_normal_web.png' + ')'}" -->
+<!-- <img src ="./assets/btn_google_signin_light_normal_web.png"> -->
+</div>

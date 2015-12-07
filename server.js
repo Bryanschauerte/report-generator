@@ -10,6 +10,10 @@ var   express = require('express')
 	, authCtrl = require('./server/controllers/authCtrl')
 	, reportsCtrl = require('./server/controllers/reportsCtrl')
 	, config = require('./server/config/configAuth')
+	, stripeCtrl = require('./server/controllers/stripeCtrl')
+	, stripeKeys = require('./server/config/stripeKeys')
+	, stripe = require("stripe")(stripeKeys.test.secretKey)
+
 	, port = 9090
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
 
@@ -42,9 +46,11 @@ app.get('/auth/google', authCtrl.google);
 app.get('/auth/google/callback', authCtrl.googleCallback);
 
 app.get('/auth', authCtrl.isAuth, authCtrl.auth);
-
-
-
+//////
+///stripe///
+///////
+app.post('/api/monthCharge', stripeCtrl.handleMonthCharge);
+app.post('/api/yearCharge', stripeCtrl.handleYearCharge);
 ////////
 //USER//
 ////////

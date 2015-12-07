@@ -1,7 +1,7 @@
 import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 import User from '../models/User';
-import config from './configAuth';
+import auth from './auth';
 
 module.exports = passport => {
 	passport.serializeUser(( user, done ) => {
@@ -20,9 +20,9 @@ module.exports = passport => {
 
 	passport.use(new FacebookStrategy({
 
-		  clientID: config.facebookAuth.clientID
-		, clientSecret: config.facebookAuth.clientSecret
-		, callbackURL: config.facebookAuth.callbackURL
+		  clientID: auth.facebookAuth.clientID
+		, clientSecret: auth.facebookAuth.clientSecret
+		, callbackURL: auth.facebookAuth.callbackURL
 		, profileFields: ['id', 'emails', 'name']
 
 	}, ( token, refreshToken, profile, done ) => {
@@ -58,9 +58,9 @@ module.exports = passport => {
 
 	passport.use(new GoogleStrategy({
 
-		  clientID: config.googleAuth.clientID
-		, clientSecret: config.googleAuth.clientSecret
-		, callbackURL: config.googleAuth.callbackURL
+		  clientID: auth.googleAuth.clientID
+		, clientSecret: auth.googleAuth.clientSecret
+		, callbackURL: auth.googleAuth.callbackURL
 
 	}, ( token, refreshToken, profile, done ) => {
 		process.nextTick(() => {
@@ -72,7 +72,7 @@ module.exports = passport => {
 
 				if (user) {
 					return done(null, user);
-				} 
+				}
 				let newUser = new User();
 
 				newUser.email = profile.emails[0].value;
@@ -88,4 +88,3 @@ module.exports = passport => {
 		});
 	}));
 }
-

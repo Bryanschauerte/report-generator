@@ -1,2 +1,4 @@
 node_modules
 **/configAuth.js
+**/auth.js
+**/stripeKeys.js
