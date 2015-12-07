@@ -134,6 +134,9 @@ color: $darkAccent;
 height: 100%;
 
 }
+.limitedHeight {
+	height: 20%
+}
 .parallexText {
 	position: absolute;
 	top: 70%;
@@ -164,8 +167,13 @@ height: 100%;
 }
 .landPageBottomElements{
 	background-color: $greyAccent;
+	display: flex;
+	justify-content: center;
 
 
+}
+.landingPageBottomTextDivs{
+	padding: 5%;
 }
 .studentContainer{
 	display: flex;
