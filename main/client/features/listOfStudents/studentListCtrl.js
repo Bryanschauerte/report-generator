@@ -2,7 +2,7 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
   var self = this;
   this.addingStudent = false;
   this.showCompileStuff = false;
-
+this.canDoReports = true;
   this.doReports = function(studentList) {
     self.showStudent = false;
     var userId = self.user._id;
@@ -12,6 +12,10 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
         self.showReports = true;
       })
   };
+
+
+
+
   this.editStudent = function(student) {
     self.showStudent = true;
     student.classId = self.studentList._id;
@@ -41,6 +45,36 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
     self.showStudent = false;
 
   };
+
+  $scope.$watch('is.user', function(newValue, oldValue) {
+
+    var getDateOfToday = function () {
+       var endDate = function () {
+           return new Date();
+       }();
+    return endDate;
+    }();
+
+if(!self.user.dateOfSubscriptionEnd){
+  self.canDoReports = false;
+}
+if(self.user.dateOfSubscriptionEnd){
+      var todaysDate = new Date(self.getDateOfToday);
+      var dayOfEnd = new Date(self.user.dateOfSubscriptionEnd)
+      todaysDate = todaysDate.valueOf()
+      dayOfEnd = dayOfEnd.valueOf()
+      if(todaysDate < dayOfEnd){
+        self.canDoReports = true;
+      }
+      if(todaysDate > dayOfEnd){
+        self.canDoReports = false;
+      }
+    console.log("today", todaysDate.valueOf())
+    console.log("today", dayOfEnd.valueOf())
+  }
+
+
+  });
 
   $scope.$watch('is.classInfo', function(newValue, oldValue) {
     self.studentList = newValue;
