@@ -12,6 +12,6 @@ angular.module('reportGenerator')
 					$location.path('/#/myAccount')
 				});
 		}
-
 	}
+
 });
