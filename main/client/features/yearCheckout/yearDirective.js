@@ -7,6 +7,8 @@ return {
   controllerAs: "is",
   bindToController: true,
   scope: {
+    
+    user: "="
   }
 
 }

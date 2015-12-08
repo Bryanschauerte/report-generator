@@ -13,7 +13,8 @@ angular.module('reportGenerator').directive('studentList', function(){
       classInfo: '=',
       showStudent: "=",
       showReports: "=",
-      reports: '='
+      reports: '=',
+      user: "="
     }
   }
 

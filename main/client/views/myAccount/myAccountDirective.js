@@ -7,6 +7,7 @@ angular.module("reportGenerator").directive("myAccount", () =>{
     controllerAs: "is",
     bindToController: true,
     scope: {
+      user: "="
     }
   };
 });

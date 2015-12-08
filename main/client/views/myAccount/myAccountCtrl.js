@@ -1,4 +1,5 @@
-angular.module('reportGenerator').controller('myAccountCtrl', () => {
+angular.module('reportGenerator').controller('myAccountCtrl', function(classService){
+
 
 
 });

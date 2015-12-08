@@ -16,7 +16,7 @@ module.exports = {
 	},
 	facebookCallback: function facebookCallback(req, res) {
 		_passport2.default.authenticate('facebook', {
-			successRedirect: '/#/classes',
+			successRedirect: '/#/myAccount',
 			failureRedirect: '/'
 		});
 	},
@@ -25,7 +25,7 @@ module.exports = {
 	},
 	googleCallback: function googleCallback(req, res) {
 		_passport2.default.authenticate('google', {
-			successRedirect: '/#/classes',
+			successRedirect: '/#/myAccount',
 			failureRedirect: '/'
 		});
 	},

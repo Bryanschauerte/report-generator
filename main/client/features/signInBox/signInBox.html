@@ -2,13 +2,17 @@
 <div class = "col s12">
   <div class = "topBar">
     <div class = "introInfo center-align">
-      <h3 ng-show = "is.user" class="accountTitle">Hello, {{user.name}}!</h3>
+      <h3 ng-show = "is.user" class="accountTitle">Hello, All Signed in!</h3>
+      <h5 ng-show = "is.user" class="accountTitle">{{is.user.userEmail}}</h5>
+      <h6 ng-show = "is.user.dateOfSubscriptionEnd" class="accountTitle">
+        Your subscription ends {{is.user.dateOfSubscriptionEnd  | date:'shortDate'}}</h6>
+
       <h3 ng-show = "!is.user" class="accountTitle">Welcome!</h3>
     </div>
 
     <div ng-show = "!is.user" class = "center-align"><p>First, Login with FaceBook or Google.</p>
-      <a href="/auth/facebook" class="waves-effect waves-light  centerButtonContent btn"  ng-click="" ng-show="!is.addingStudent"><img class = "facebookIcon left-align" src="./assets/FB-f-Logo__blue_1024.png"></a>
-      <a href="/auth/google" class="waves-effect waves-light googleButton btn"  ng-click="" ng-show="!is.addingStudent"><img src = "./assets/btn_google_signin_light_normal_web.png"></a>
+      <a href="/auth/facebook" class="waves-effect waves-light  centerButtonContent btn" ng-show="!is.addingStudent"><img class = "facebookIcon left-align" src="./assets/FB-f-Logo__blue_1024.png"></a>
+      <a href="/auth/google" class="waves-effect waves-light googleButton btn" ng-show="!is.addingStudent"><img src = "./assets/btn_google_signin_light_normal_web.png"></a>
     </div>
 
   </div>
@@ -29,7 +33,7 @@
       <p class = "price flow-text center-align">$5.00 ~ USD</p>
     </div>
     <div class="card-action center-align">
-      <one-Month ng-show = "is.user"></one-Month>
+      <one-Month ng-if = "is.user"></one-Month>
     </div>
   </div>
 </div>
@@ -48,7 +52,7 @@
             <p class = "price flow-text center-align">$40.00 ~ USD</p>
           </div>
           <div class="card-action center-align">
-            <year-Pay ng-show = "is.user"></year-Pay>
+            <year-Pay  user="is.user" ng-if = "is.user"></year-Pay>
 
           </div>
         </div>

@@ -3,10 +3,12 @@ angular.module('reportGenerator').controller('studentCtrl', function($scope, cla
 
   this.student = self.studentInfo;
 
+
   this.changeStudentAtt = function(student) {
     var clasId = self.classInfo._id;
     student.classId = clasId;
-    classService.changeAttribute(student);
+    var userId = self.user._id;
+    classService.changeAttribute(userId, student);
   };
 
   this.doneDoing = function(student) {

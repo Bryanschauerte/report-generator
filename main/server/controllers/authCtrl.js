@@ -13,7 +13,7 @@ module.exports = {
 
 	facebookCallback( req, res ) {
 		passport.authenticate('facebook', {
-			successRedirect: '/#/classes',
+			successRedirect: '/#/myAccount',
 			failureRedirect: '/'
 		});
 	},
@@ -24,7 +24,7 @@ module.exports = {
 
 	googleCallback( req, res ) {
 		passport.authenticate('google', {
-			successRedirect: '/#/classes',
+			successRedirect: '/#/myAccount',
 			failureRedirect: '/'
 		});
 	},

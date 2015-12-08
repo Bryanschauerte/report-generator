@@ -8,7 +8,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var User = _mongoose2.default.Schema({
 	userEmail: { type: String, required: true },
-	studentGroups: [{ type: _mongoose2.default.Schema.Types.ObjectId, ref: 'StudentGroup' }]
+	studentGroups: [{ type: _mongoose2.default.Schema.Types.ObjectId, ref: 'StudentGroup' }],
+	dateOfSubscriptionEnd: { type: Date }
 });
 
 module.exports = _mongoose2.default.model('User', User);

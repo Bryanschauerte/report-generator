@@ -1,11 +1,21 @@
-angular.module("reportGenerator").controller('yearPayCtrl', function($scope, $http) {
+angular.module("reportGenerator").controller('yearPayCtrl', function($scope, classService, $http) {
 
+var self = this;
+
+this.getUser = function() {
+  classService.getUser().then(function(response, err){
+
+    self.user = response.data;
+
+  })
+}()
 
 this.doCheckout = function(token) {
-  alert("Got Stripe token: " + token.id + "year charge");
+var userId = self.user._id;
+
   return $http({
     method: "POST",
-    url: "/api/yearCharge",
+    url: "/api/" + userId+ "/yearCharge",
     data: {
       stripeToken: token
     }

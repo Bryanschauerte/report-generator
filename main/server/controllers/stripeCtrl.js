@@ -1,14 +1,80 @@
+import User from '../models/User';
+
 module.exports = {
 
 
+  addMonthDate(req, res){
 
-  handleMonthCharge: function handleMonthCharge(req, res) {
+      User.findById(req.params.userId, ( err, user ) => {
+        if (err) {
+          console.log("finding User Error")
+          return res.status(500).send(err);
+        }
+
+        var setDateObject = function () {
+            var endDate = function () {
+                return new Date();
+            }();
+            var month = endDate.getMonth();
+            if(month == 11){
+              month = 0;
+            }else {
+              month +=1;
+            }
+            endDate.setMonth(month);
+    return endDate;
+        }();
+
+user.set('dateOfSubscriptionEnd', setDateObject);
+        user.save(( err, updatedUser ) => {
+          if (err) {
+            return res.status(500).send(err);
+          }
+
+
+        });
+      });
+
+  },
+
+
+
+
+addYearDate(req, res){
+
+    User.findById(req.params.userId, ( err, user ) => {
+      if (err) {
+        console.log("finding User Error")
+        return res.status(500).send(err);
+      }
+
+      var setDateObject = function () {
+
+          var endDate = function () {
+              return new Date();
+          }();
+
+          var year = endDate.getFullYear();
+          year +=1;
+          endDate.setFullYear(year);
+  return endDate;
+      }();
+
+user.set('dateOfSubscriptionEnd', setDateObject);
+      user.save(( err, updatedUser ) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+
+      });
+    });
+
+},
+
+handleMonthCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys')
-
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-
-
-
     var stripeToken = req.body.stripeToken;
 
 
@@ -20,19 +86,18 @@ module.exports = {
     }, function(err, charge) {
       if (err && err.type === 'StripeCardError') {
         // The card has been declined
-      res.send(err)
-        console.log(err, "error");
-      }else {
-        res.send("month")
+console.log(err, "error");
+    return res.send(err)
+
       }
 
     });
-
+next();
   },
 
 
 
-  handleYearCharge: function handleYearCharge(req, res) {
+handleYearCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys')
     var stripe = require("stripe")(stripeKeys.test.secretKey);
     var stripeToken = req.body.stripeToken;
@@ -46,11 +111,9 @@ module.exports = {
       if (err && err.type === 'StripeCardError') {
         res.send(err)
 
-      }else {
-        res.send("year")
       }
 
     });
-
+next();
   }
 }

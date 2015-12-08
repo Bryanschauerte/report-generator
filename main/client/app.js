@@ -16,7 +16,7 @@ angular.module('reportGenerator', ['ui.router', "stripe.checkout"])
 		template: "<my-Classes></my-Classes>",
 		resolve: {
 			user( authService ) {
-				authService.getAuth();
+			return authService.getAuth();
 			}
 		}
 	})

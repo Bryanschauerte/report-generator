@@ -13,7 +13,6 @@ var   express = require('express')
 	, stripeCtrl = require('./server/controllers/stripeCtrl')
 	, stripeKeys = require('./server/config/stripeKeys')
 	, stripe = require("stripe")(stripeKeys.test.secretKey)
-
 	, port = 9090
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
 
@@ -43,7 +42,8 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook'), function( 
 	if (!req.user) {
 		return res.status(401).send('not allowed');
 	}
-	res.redirect('/#/myClasses');
+
+	res.redirect('/#/myAccount');
 });
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
@@ -52,22 +52,18 @@ app.get('/auth/google/callback', passport.authenticate('google'), function( req,
 	if (!req.user) {
 		return res.status(401).send('not allowed');
 	}
-	res.redirect('/#/myClasses');
+	res.redirect('/#/myAccount');
 });
 
 app.get('/auth', authCtrl.isAuth, authCtrl.auth);
 //////
 ///stripe///
 ///////
-app.post('/api/monthCharge', stripeCtrl.handleMonthCharge);
-app.post('/api/yearCharge', stripeCtrl.handleYearCharge);
+app.post('/api/:userId/monthCharge', stripeCtrl.handleMonthCharge, stripeCtrl.addMonthDate);
+app.post('/api/:userId/yearCharge', stripeCtrl.handleYearCharge, stripeCtrl.addYearDate);
 ////////
 //USER//
 ////////
-
-app.get('/api/user/:userId', userCtrl.getUser);
-app.put('/api/user/add-group/:userId/:groupId', userCtrl.addGroup);
-app.put('/api/user/remove-group/:userId/:groupId', userCtrl.removeGroup);
 
 
 
@@ -75,14 +71,13 @@ app.put('/api/user/remove-group/:userId/:groupId', userCtrl.removeGroup);
 //GROUP//
 /////////
 
-app.post('/api/newClass/', groupCtrl.addGroup);
-app.put('/api/groups/newStudent', groupCtrl.addStudent);
-app.delete('/api/groups/remove-student/:groupId/:studentId', groupCtrl.removeStudent);
-app.delete('/api/groups/:groupId', groupCtrl.deleteGroup);
-
-app.put('/api/group/makeClassReports', reportsCtrl.doReports);
-
-app.put('/api/groups/update-grade/', groupCtrl.updateGrades);
+app.get('/api/user/:userId', userCtrl.getUser);
+app.put('/api/user/add-group/:userId', userCtrl.addGroup);
+app.put('/api/:userId/groups/:classId/newStudent', userCtrl.addStudent);
+app.delete('/api/:userId/groups/remove-student/:groupId/:studentId', userCtrl.removeStudent);
+app.delete('/api/:userId/groups/:groupId', userCtrl.removeGroup);
+app.put('/api/:userId/group/makeClassReports', reportsCtrl.doReports);
+app.put('/api/:userId/groups/update-grade/', userCtrl.updateGrades);
 
 
 app.listen(port, function() {

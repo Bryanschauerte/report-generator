@@ -1,13 +1,23 @@
-angular.module("reportGenerator").controller('oneMonthCtrl', function($scope, $http) {
+angular.module("reportGenerator").controller('oneMonthCtrl', function($scope, $http, classService) {
+
+var self = this;
+
+this.getUser = function() {
+  classService.getUser().then(function(response, err){
+
+    self.user = response.data;
+
+  })
+}()
 
 
 
-// Stripe.setPublishableKey('pk_test_ejTw1YpRyW0G0xHXK8FngpJJ');
 this.doCheckout = function(token) {
-  alert("Got Stripe token: " + token.id + "doing the call to server");
+var userId = self.user._id;
+
   return $http({
     method: "POST",
-    url: "/api/monthCharge",
+    url: "/api/" + userId + "/monthCharge",
     data: {
       stripeToken: token
     }

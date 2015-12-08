@@ -3,6 +3,27 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
   this.classStore = [];
   this.removingClass = false;
 
+  this.getUser = function() {
+    classService.getUser().then(function(response, err){
+      self.user = response.data;
+      if(self.user){
+        self.getUserClasses();
+      }
+    })
+  }
+  this.getUser();
+
+
+this.getUserClasses = function(){
+  var userId = self.user._id
+  classService.getUserClasses(userId).then(function(response, err){
+    for(var i = 0; i < response.data.studentGroups.length; i++ ){
+      self.classStore.push(response.data.studentGroups[i]);
+    }
+  })
+}
+
+
   this.startRemoveClass = function() {
     self.removingClass = true;
     self.showReports = false;
@@ -23,7 +44,9 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
     }
     self.classes = self.classStore;
     self.classInfo = false;
-    classService.removeClass(part._id).then(function(response, error) {
+    var userId = self.user._id;
+
+    classService.removeClass(userId, part._id).then(function(response, error) {
 
     })
   }
@@ -71,8 +94,10 @@ angular.module('reportGenerator').controller('classesHeadCtrl', function(classSe
         students: []
       }
       className = '';
-      classService.newClassToAdd(classInfo).then(function(response, err) {
+      var userId = self.user._id;
+      classService.newClassToAdd(userId, classInfo).then(function(response, err) {
         self.classInfo = response.data;
+        console.log(self.classInfo, "head ctrl")
         self.classStore.push(response.data);
       });
 

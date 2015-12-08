@@ -1,59 +1,73 @@
 angular.module("reportGenerator").service("classService", function($http){
 
-
-this.newClassToAdd = function(newClassName){
+this.getUser = function(){
   return $http({
-    method: "POST",
-    url: "/api/newClass",
+    method: "GET",
+    url:"/auth",
+  })
+},
+//new  returns after a populate
+this.getUserClasses = function(userId){
+  return $http({
+    method: "GET",
+    url:'/api/user/' + userId,
+  })
+},
+
+this.newClassToAdd = function(userId, newClassName){
+  return $http({
+    method: "PUT",
+    url: '/api/user/add-group/' + userId,
     data: {
       className: newClassName
     }
   });
 },
 
-this.removeClass = function(groupId){
+this.removeClass = function(userId, groupId){
   return $http({
     method: "DELETE",
-    url: "/api/groups/" + groupId
+    url: "/api/"+ userId + "/groups/" + groupId
   });
 },
-this.newStudentToAdd = function(newStudent){
+
+this.newStudentToAdd = function(userId, newStudent, classId){
   return $http({
     method: "PUT",
-    url:"/api/groups/newStudent",
+    url:"/api/" + userId + "/groups/" +classId+"/newStudent",
     data: {
       newStudent: newStudent
     }
   });
 },
-this.getClassInfo = function(){
+this.getClassInfo = function(userId){
   return $http({
     method: "GET",
-    url: "/api/get"
+    url: "/api/" + userId + "/get"
   });
 
 },
 
-this.deleteStudent = function(classId, studentId){
+this.deleteStudent = function(userId, classId, studentId){
   return $http({
     method:"DELETE",
-    url:"/api/groups/remove-student/" + classId + "/" + studentId
+    url:"/api/" + userId + "/groups/remove-student/" + classId + "/" + studentId
   });
 },
-this.changeAttribute = function(student){
+this.changeAttribute = function(userId, student){
 
   return $http({
     method: "PUT",
-    url: "/api/groups/update-grade/",
+    url: "/api/" + userId + "/groups/update-grade/",
     data: student
   });
 },
 
-this.compileReports = function(classObject){
+this.compileReports = function(userId, classObject){
 
   return $http({
     method: "PUT",
-    url: "/api/group/makeClassReports",
+    url: "/api/" + userId + "/group/makeClassReports",
     data: classObject
   })
 }
