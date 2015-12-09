@@ -16,11 +16,14 @@ module.exports = {
                 return new Date();
             }();
             var month = endDate.getMonth();
+            var year = endDate.getFullYear();
             if(month == 11){
               month = 0;
+              year +=1;
             }else {
               month +=1;
             }
+            endDate.setFullYear(year);
             endDate.setMonth(month);
     return endDate;
         }();

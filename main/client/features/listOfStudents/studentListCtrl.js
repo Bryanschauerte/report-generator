@@ -2,14 +2,24 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
   var self = this;
   this.addingStudent = false;
   this.showCompileStuff = false;
-this.canDoReports = true;
+  this.canDoReports = true;
+
   this.doReports = function(studentList) {
     self.showStudent = false;
     var userId = self.user._id;
-
-    classService.compileReports(userId, studentList).then(function(response, err) {
+    var user = self.user;
+    var sent = {
+      studentList: studentList,
+      user: user
+    }
+    classService.compileReports(user, sent).then(function(response, err) {
+      if(response.data == "notAllowed"){
+        self.canDoReports = false}
+      else{
+        self.canDoReports = true;
         self.reports = response.data;
         self.showReports = true;
+      }
       })
   };
 
@@ -48,29 +58,28 @@ this.canDoReports = true;
 
   $scope.$watch('is.user', function(newValue, oldValue) {
 
-    var getDateOfToday = function () {
-       var endDate = function () {
-           return new Date();
-       }();
-    return endDate;
-    }();
-
 if(!self.user.dateOfSubscriptionEnd){
   self.canDoReports = false;
 }
 if(self.user.dateOfSubscriptionEnd){
-      var todaysDate = new Date(self.getDateOfToday);
+  var getDateOfToday = function () {
+     var endDate = function () {
+         return new Date();
+     }();
+  return endDate;
+  }();
+
+      var todaysDate = getDateOfToday;
       var dayOfEnd = new Date(self.user.dateOfSubscriptionEnd)
-      todaysDate = todaysDate.valueOf()
-      dayOfEnd = dayOfEnd.valueOf()
-      if(todaysDate < dayOfEnd){
-        self.canDoReports = true;
-      }
+
+      todaysDate = todaysDate.getTime()
+      dayOfEnd = dayOfEnd.getTime()
+
       if(todaysDate > dayOfEnd){
         self.canDoReports = false;
       }
-    console.log("today", todaysDate.valueOf())
-    console.log("today", dayOfEnd.valueOf())
+
+
   }
 
 

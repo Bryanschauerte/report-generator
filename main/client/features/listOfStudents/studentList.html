@@ -40,7 +40,7 @@
 <div class="greyAccent col s10">
   <student  user="is.user" ng-show="is.currentStudent && is.showStudent" show-reports = "is.showReports" student-Info='is.currentStudent'  class-Info="is.classInfo"></student>
   <a class="btn-large waves-effect waves-light redBackground" ng-show = "is.currentStudent && is.showStudent" ng-click="is.deleteStudent(is.currentStudent.classId, is.currentStudent._id)">Delete this Student</a>
-  <report  user="is.user" reports="is.reports" show-reports = "is.showReports" ng-show="is.showReports && !is.showStudent && is.canDoReports"></report>
+  <report  user="is.user" reports="is.reports" show-reports = "is.showReports" ng-if="is.showReports && !is.showStudent && is.canDoReports"></report>
   <div ng-show = "is.showReports && !is.showStudent && !is.canDoReports">
 
     <div class="row">
