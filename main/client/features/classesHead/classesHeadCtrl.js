@@ -97,7 +97,6 @@ this.getUserClasses = function(){
       var userId = self.user._id;
       classService.newClassToAdd(userId, classInfo).then(function(response, err) {
         self.classInfo = response.data;
-        console.log(self.classInfo, "head ctrl")
         self.classStore.push(response.data);
       });
 

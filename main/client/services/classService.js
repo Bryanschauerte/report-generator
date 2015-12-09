@@ -63,12 +63,12 @@ this.changeAttribute = function(userId, student){
   });
 },
 
-this.compileReports = function(userId, classObject){
+this.compileReports = function(user, sent){
 
   return $http({
     method: "PUT",
-    url: "/api/" + userId + "/group/makeClassReports",
-    data: classObject
+    url: "/api/" + user._id + "/group/makeClassReports",
+    data: sent
   })
 }
 

@@ -380,11 +380,12 @@ module.exports = {
     };
 
     function putTogetherReport() {
-
-      var students = req.body.students;
+      console.log(req.body.user.dateOfSubscriptionEnd);
+      var userDate = req.body.user.dateOfSubscriptionEnd;
+      var students = req.body.studentList.students;
       var combine = "";
       var classReports = {};
-      classReports.className = req.body.className;
+      classReports.className = req.body.studentList.className;
       classReports.students = [];
 
       for (var i = 0; i < students.length; i++) {
@@ -487,8 +488,33 @@ module.exports = {
         classReports.students.push(report);
         string = "";
       }
-      console.log(classReports, "class reports ready to send");
-      res.send(classReports);
+
+      var canDo = true;
+      if (!userDate) {
+        canDo = false;
+      }
+      if (userDate) {
+        var getDateOfToday = (function () {
+          var endDate = (function () {
+            return new Date();
+          })();
+          return endDate;
+        })();
+
+        var todaysDate = getDateOfToday;
+        var dayOfEnd = new Date(userDate);
+        todaysDate = todaysDate.getTime();
+        dayOfEnd = dayOfEnd.getTime();
+        if (todaysDate >= dayOfEnd) {
+          canDo = false;
+        }
+      }
+      if (canDo) {
+        res.send(classReports);
+      }
+      if (!canDo) {
+        res.send("notAllowed");
+      }
     }
     putTogetherReport();
   }
