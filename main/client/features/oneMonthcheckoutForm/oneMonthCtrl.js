@@ -21,6 +21,13 @@ var userId = self.user._id;
     data: {
       stripeToken: token
     }
+  }).then(function(response, err){
+    if(err){
+      console.log(err, "eeor")
+    }
+    if(response){
+      self.user = response.data
+    }
   });
 };
 

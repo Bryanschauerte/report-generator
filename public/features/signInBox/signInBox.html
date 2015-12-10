@@ -19,10 +19,12 @@
 <div class="row" ng-show="is.user">
   <div class="col s12">
     <div class="card greenBackground">
+
       <div class="card-content center-align">
 
-
-        <a class="waves-effect waves-light btn" href="/#/myClasses" class="flow-text center-align">You're all set, head on to Classes!</a>
+        <div ng-show="!is.user.dateOfSubscriptionEnd" href="/#/myClasses" class="flow-text warningColor center-align">
+          <p>You just need to add a subscription!</p></div>
+        <a class="waves-effect waves-light btn flow-text center-align" ng-show="is.user.dateOfSubscriptionEnd" href="/#/myClasses">You're all set, head on to Classes!</a>
       </div>
 
     </div>
