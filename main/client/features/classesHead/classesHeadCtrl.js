@@ -33,22 +33,22 @@ this.getUserClasses = function(){
 
   this.removeClass = function(part) {
 
+    var userId = self.user._id;
+    classService.removeClass(userId, part._id).then(function(response, error) {
+
+    })
     for (var i = 0; i < self.classStore.length; i++) {
-      if (self.classStore[i].className == part.className) {
-        self.classStore = self.classStore.splice(i, 1);
-        if (i == 0) {
-          self.classStore = []
-        }
+      if (self.classStore[i]._id == part._id) {
+        self.classStore.splice(i, 1);
+
 
       }
     }
     self.classes = self.classStore;
     self.classInfo = false;
-    var userId = self.user._id;
 
-    classService.removeClass(userId, part._id).then(function(response, error) {
 
-    })
+
   }
 
   this.endRemovingClass = function() {

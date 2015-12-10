@@ -37,6 +37,8 @@ module.exports = {
         if (err) {
           return res.status(500).send(err);
         }
+
+        res.send(updatedUser);
       });
     });
   },
@@ -65,13 +67,15 @@ module.exports = {
         if (err) {
           return res.status(500).send(err);
         }
+
+        res.send(updatedUser);
       });
     });
   },
   handleMonthCharge: function handleMonthCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys');
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
     stripe.charges.create({
       amount: 500, // amount in cents, again
@@ -90,7 +94,7 @@ module.exports = {
   handleYearCharge: function handleYearCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys');
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
     var charge = stripe.charges.create({
       amount: 4000, // amount in cents, again

@@ -9,6 +9,9 @@ $redAccent: #FF3100;
 $yellowAccent: #FFB700;
 $greenAccent: #00FF67;
 $googleBlue: #4285F4;
+.warningColor {
+	background-color: $yellowAccent;
+}
 .logoText {
 	color: $colorAccent;
 	font-weight: bolder;

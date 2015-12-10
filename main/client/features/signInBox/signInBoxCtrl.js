@@ -21,5 +21,8 @@ $scope.$watch('is.user', function(newValue, oldValue) {
 
 
 });
+$scope.$watch('is.user.dateOfSubscriptionEnd', function(newValue, oldValue) {
 
+
+});
 })
