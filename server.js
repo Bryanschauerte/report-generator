@@ -18,6 +18,10 @@ var   express = require('express')
 	, port = 9090
 	// , port = 80
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
+	var config = module.exports = {};
+	config.portNum = 80;
+
+	var portNum = config.portNum;
 
 require('./server/config/passport')(passport);
 
