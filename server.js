@@ -13,7 +13,7 @@ var   express = require('express')
 	, stripeCtrl = require('./server/controllers/stripeCtrl')
 	, stripeKeys = require('./server/config/stripeKeys')
 	, stripe = require("stripe")(stripeKeys.test.secretKey)
-	, port = 9090
+	, port = 80
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
 
 require('./server/config/passport')(passport);
