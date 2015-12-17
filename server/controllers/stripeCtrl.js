@@ -20,11 +20,14 @@ module.exports = {
           return new Date();
         })();
         var month = endDate.getMonth();
+        var year = endDate.getFullYear();
         if (month == 11) {
           month = 0;
+          year += 1;
         } else {
           month += 1;
         }
+        endDate.setFullYear(year);
         endDate.setMonth(month);
         return endDate;
       })();
@@ -34,6 +37,8 @@ module.exports = {
         if (err) {
           return res.status(500).send(err);
         }
+
+        res.send(updatedUser);
       });
     });
   },
@@ -62,13 +67,15 @@ module.exports = {
         if (err) {
           return res.status(500).send(err);
         }
+
+        res.send(updatedUser);
       });
     });
   },
   handleMonthCharge: function handleMonthCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys');
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
     stripe.charges.create({
       amount: 500, // amount in cents, again
@@ -87,7 +94,7 @@ module.exports = {
   handleYearCharge: function handleYearCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys');
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
     var charge = stripe.charges.create({
       amount: 4000, // amount in cents, again

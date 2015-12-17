@@ -2,16 +2,34 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
   var self = this;
   this.addingStudent = false;
   this.showCompileStuff = false;
+  this.canDoReports = true;
 
   this.doReports = function(studentList) {
     self.showStudent = false;
     var userId = self.user._id;
-
-    classService.compileReports(userId, studentList).then(function(response, err) {
+    var user = self.user;
+    var sent = {
+      studentList: studentList,
+      user: user
+    }
+    if(self.user.dateOfSubscriptionEnd){
+    classService.compileReports(user, sent).then(function(response, err) {
+      if (response.data == "notAllowed") {
+        self.canDoReports = false;
+        self.showReports = false;
+      } else {
+        self.canDoReports = true;
         self.reports = response.data;
         self.showReports = true;
-      })
+      }
+    })
+}
+
   };
+
+
+
+
   this.editStudent = function(student) {
     self.showStudent = true;
     student.classId = self.studentList._id;
@@ -42,14 +60,42 @@ angular.module('reportGenerator').controller('studentListCtrl', function($scope,
 
   };
 
+  $scope.$watch('is.user', function(newValue, oldValue) {
+
+    if (!self.user.dateOfSubscriptionEnd) {
+      self.canDoReports = false;
+    }
+    if (self.user.dateOfSubscriptionEnd) {
+      var getDateOfToday = function() {
+        var endDate = function() {
+          return new Date();
+        }();
+        return endDate;
+      }();
+
+      var todaysDate = getDateOfToday;
+      var dayOfEnd = new Date(self.user.dateOfSubscriptionEnd)
+
+      todaysDate = todaysDate.getTime()
+      dayOfEnd = dayOfEnd.getTime()
+
+      if (todaysDate > dayOfEnd) {
+        self.canDoReports = false;
+      }
+
+
+    }
+
+
+  });
+
   $scope.$watch('is.classInfo', function(newValue, oldValue) {
     self.studentList = newValue;
     this.showCompileStuff = false;
   });
 
 
-  $scope.$watch('is.studentList.students', function(newValue, oldValue) {
-  });
+  $scope.$watch('is.studentList.students', function(newValue, oldValue) {});
 
   this.doIt = function() {
     $('select').material_select();

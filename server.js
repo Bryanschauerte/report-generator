@@ -13,15 +13,32 @@ var   express = require('express')
 	, stripeCtrl = require('./server/controllers/stripeCtrl')
 	, stripeKeys = require('./server/config/stripeKeys')
 	, stripe = require("stripe")(stripeKeys.test.secretKey)
+
 	, port = 80
+
+, uuid = require('node-uuid')
+	// , stripe = require("stripe")(stripeKeys.test.secretKey)
+
 	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
+	var config = module.exports = {};
+	config.portNum = 80;
+
+	var portNum = config.portNum;
 
 require('./server/config/passport')(passport);
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
-app.use(session({ secret: config.sessionSecret }));
+app.use(session({
+	genid: function(req) {
+   return uuid.v1() // use UUIDs for session IDs
+  },
+	secret: config.sessionSecret,
+	saveUninitialized: true,
+                 resave: true
+
+ }));
 app.use(passport.initialize());
 app.use(passport.session());
 

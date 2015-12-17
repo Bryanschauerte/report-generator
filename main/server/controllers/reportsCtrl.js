@@ -2,22 +2,23 @@ module.exports = {
 
 
 
-doReports(req, res){
+  doReports(req, res) {
+
 
     var badBehavior = {
       1: "He needs to focus more in class and follow directions better.",
       2: "He needs to do a better job of following directions and being respectful of others.",
       3: "He needs to work on his behavior in class.",
-      4:"He needs to put more effort into focusing and listening to directions.",
-      5:"He does a poor job of listening to directions and behaving."
+      4: "He needs to put more effort into focusing and listening to directions.",
+      5: "He does a poor job of listening to directions and behaving."
     };
 
     var fairBehavior = {
       1: "He sometime gets distracted in class, but does a great job of returning to focus.",
       2: "He does a fair job of behaving in class and listening to directions.",
       3: "He does a fair job of listening to directions and behaving in class.",
-      4:"He usually does a fair job of listening to directions and behaving.",
-      5:"He tends to do a pretty good job of listening to directions and behaving with others."
+      4: "He usually does a fair job of listening to directions and behaving.",
+      5: "He tends to do a pretty good job of listening to directions and behaving with others."
 
     };
 
@@ -25,8 +26,8 @@ doReports(req, res){
       1: "He does a great job of working with others in class.",
       2: "He works very well with the other students and listening to directions.",
       3: "He does a great job of listening to directions and behaves well.",
-      4:"He always works well with others and does a great job of listening to directions.",
-      5:"He has great behavior in class and does well listening to the directions of the teacher."
+      4: "He always works well with others and does a great job of listening to directions.",
+      5: "He has great behavior in class and does well listening to the directions of the teacher."
 
     };
 
@@ -34,16 +35,16 @@ doReports(req, res){
       1: "He needs to work on his pronunciation.",
       2: "He needs to practice his pronunciation more.",
       3: "He needs to do a better job of practicing proper pronunciation.",
-      4:"He needs to put more effort into his pronunciation of the vocabulary.",
-      5:"He needs to work on this pronunciation of the vocabulary."
+      4: "He needs to put more effort into his pronunciation of the vocabulary.",
+      5: "He needs to work on this pronunciation of the vocabulary."
     };
 
     var fairPronunciation = {
       1: "He has very good pronunciation when speaking.",
       2: "He does a good job with his pronunciation.",
       3: "He does very well with his pronunciation.",
-      4:"He does a good job with the pronunciation of the vocabulary.",
-      5:"He does a good job with his pronunciation of the material."
+      4: "He does a good job with the pronunciation of the vocabulary.",
+      5: "He does a good job with his pronunciation of the material."
 
     };
 
@@ -51,8 +52,8 @@ doReports(req, res){
       1: "He has super pronunciation when speaking during class.",
       2: "He has excellent pronunciation while speaking.",
       3: "He does an excellent job with his pronunciation.",
-      4:"He has excellent pronunciation during class activities.",
-      5:"He has super pronunciation when participating in class."
+      4: "He has excellent pronunciation during class activities.",
+      5: "He has super pronunciation when participating in class."
 
     };
 
@@ -68,8 +69,8 @@ doReports(req, res){
 
     var fairReadingAbility = {
       1: "His reading has room for improvement but has been good lately.",
-      2: "His reading skills are improving but more effort is needed.",
-      3: "His reading skills are getting better but he needs to work on it a bit more.",
+      2: "His reading is improving but more effort is needed.",
+      3: "His reading skills are getting better but he needs to work on them a bit more.",
       4: "His reading has been improving, but he still needs to practice.",
       5: "His reading ability is getting better as he practices."
 
@@ -103,7 +104,7 @@ doReports(req, res){
 
     };
 
-    var excellentVerbalComprehension=  {
+    var excellentVerbalComprehension = {
       1: "He has an excellent ability to understand verbal dialogue.",
       2: "He does excellent understanding verbal directions and questions.",
       3: "He has been doing an excellent job of answering verbal comprehension questions.",
@@ -114,7 +115,7 @@ doReports(req, res){
 
 
 
-    var badReadingComprehension= {
+    var badReadingComprehension = {
       1: "He doesnt do a very good job of answering comprehension questions regarding the reading material and needs to put in more effort.",
       2: "He has poor reading comprehension and needs to practice more.",
       3: "He needs to put more effort into practicing his reading comprehension.",
@@ -122,7 +123,7 @@ doReports(req, res){
       5: "He really needs to work on his reading ability, maybe extra time reading aloud."
     };
 
-    var fairReadingComprehension ={
+    var fairReadingComprehension = {
       1: "He has been doing a much better job of understanding reading material.",
       2: "His reading comprehension has been improving, but still needs extra practice.",
       3: "His reading comprehension level is getting better and improving steadily.",
@@ -131,7 +132,7 @@ doReports(req, res){
 
     };
 
-    var excellentReadingComprehension ={
+    var excellentReadingComprehension = {
       1: "Recently, his reading comprehension has been excellent and he has been doing a great job answering comprehension questions.",
       2: "His reading comprehension level has gotten much better!",
       3: "His reading comprehension has been increasing and he does a great job of answering questions.",
@@ -218,309 +219,354 @@ doReports(req, res){
       5: "He has been excelling on his vocabulary tests."
     };
 
-   function getRandomNumber(){
-     return Math.floor(Math.random() * 5) + 1;
-   };
+    function getRandomNumber() {
+      return Math.floor(Math.random() * 5) + 1;
+    };
 
-  function getBehavior(level){
-    var randomNum = getRandomNumber();
-    var behaviorSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        behaviorSentence += excellentBehavior[randomNum];
-        break;
+    function getBehavior(level) {
+      var randomNum = getRandomNumber();
+      var behaviorSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            behaviorSentence += excellentBehavior[randomNum];
+            break;
 
-        case ('Fair'):
-        behaviorSentence += fairBehavior[randomNum];
-        break;
+          case ('Fair'):
+            behaviorSentence += fairBehavior[randomNum];
+            break;
 
-        case ('Bad'):
-        behaviorSentence += badBehavior[randomNum];
-        break;
+          case ('Bad'):
+            behaviorSentence += badBehavior[randomNum];
+            break;
+        }
+
+      }
+      return behaviorSentence;
+    }
+
+    function getPronunciation(level) {
+      var randomNum = getRandomNumber();
+      var pronunciationSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            pronunciationSentence += excellentPronunciation[randomNum];
+            break;
+
+          case ('Fair'):
+            pronunciationSentence += fairPronunciation[randomNum];
+            break;
+
+          case ('Bad'):
+            pronunciationSentence += badPronunciation[randomNum];
+            break;
+        }
+
+      }
+      return pronunciationSentence;
+    };
+
+
+
+
+    function getReadingAbility(level) {
+      var randomNum = getRandomNumber();
+      var readingSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            readingSentence += excellentReadingAbility[randomNum];
+            break;
+
+          case ('Fair'):
+            readingSentence += fairReadingAbility[randomNum];
+            break;
+
+          case ('Bad'):
+            readingSentence += badReadingAbility[randomNum];
+            break;
+        }
+
+      }
+      return readingSentence;
+    };
+
+
+
+
+    function getVerbalComprehension(level) {
+      var randomNum = getRandomNumber();
+      var verbalComprehensionSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            verbalComprehensionSentence += excellentVerbalComprehension[randomNum];
+            break;
+
+          case ('Fair'):
+            verbalComprehensionSentence += fairVerbalComprehension[randomNum];
+            break;
+
+          case ('Bad'):
+            verbalComprehensionSentence += badVerbalComprehension[randomNum];
+            break;
+        }
+
+      }
+      return verbalComprehensionSentence;
+    };
+
+
+
+
+    function getReadingComprehension(level) {
+      var randomNum = getRandomNumber();
+      var readingComprehensionSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            readingComprehensionSentence += excellentReadingComprehension[randomNum];
+            break;
+
+          case ('Fair'):
+            readingComprehensionSentence += fairReadingComprehension[randomNum];
+            break;
+
+          case ('Bad'):
+            readingComprehensionSentence += badReadingComprehension[randomNum];
+            break;
+        }
+
+      }
+      return readingComprehensionSentence;
+    };
+
+
+
+
+
+    function getParticipation(level) {
+      var randomNum = getRandomNumber();
+      var participationSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            participationSentence += excellentParticipation[randomNum];
+            break;
+
+          case ('Fair'):
+            participationSentence += fairParticipation[randomNum];
+            break;
+
+          case ('Bad'):
+            participationSentence += badParticipation[randomNum];
+            break;
+        }
+
+      }
+      return participationSentence;
+    };
+
+
+
+
+    function getSpeakingAbility(level) {
+      var randomNum = getRandomNumber();
+      var speakingAbilitySentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            speakingAbilitySentence += excellentSpeakingAbility[randomNum];
+            break;
+
+          case ('Fair'):
+            speakingAbilitySentence += fairSpeakingAbility[randomNum];
+            break;
+
+          case ('Bad'):
+            speakingAbilitySentence += badSpeakingAbility[randomNum];
+            break;
+        }
+
+      }
+      return speakingAbilitySentence;
+    };
+
+
+
+
+    function getVocabularyTest(level) {
+      var randomNum = getRandomNumber();
+      var vocabularyTestSentence = " ";
+      if (level != "N/A") {
+        switch (level) {
+          case ('Excellent'):
+            vocabularyTestSentence += excellentVocabularyTests[randomNum];
+            break;
+
+          case ('Fair'):
+            vocabularyTestSentence += fairVocabularyTests[randomNum];
+            break;
+
+          case ('Bad'):
+            vocabularyTestSentence += badVocabularyTests[randomNum];
+            break;
+
+
+        }
+
+      }
+      return vocabularyTestSentence;
+    };
+
+
+
+    function putTogetherReport() {
+      console.log(req.body.user.dateOfSubscriptionEnd)
+      var userDate = req.body.user.dateOfSubscriptionEnd;
+      var students = req.body.studentList.students;
+      var combine = "";
+      var classReports = {};
+      classReports.className = req.body.studentList.className;
+      classReports.students = [];
+
+      for (var i = 0; i < students.length; i++) {
+
+        var combine = "";
+        var report = {
+          name: students[i],
+          report: students[i].name + ": "
+        };
+        var string = " ";
+        for (var crit in students[i]) {
+
+          switch (crit) {
+            case ('readingAbility'):
+              string += getReadingAbility(students[i][crit]);
+              break;
+
+            case ('vocabularyTests'):
+              string += getVocabularyTest(students[i][crit]);
+              break;
+
+            case ('speakingAbility'):
+              string += getSpeakingAbility(students[i][crit]);
+              break;
+
+            case ('readingComprehension'):
+              string += getReadingComprehension(students[i][crit]);
+              break;
+
+            case ('participation'):
+              string += getParticipation(students[i][crit]);
+              break;
+
+            case ('verbalComprehension'):
+              string += getVerbalComprehension(students[i][crit]);
+              break;
+
+            case ('behavior'):
+              string += getBehavior(students[i][crit]);
+              break;
+
+
+            case ('pronunciation'):
+              string += getPronunciation(students[i][crit]);
+              break;
+
+              // case ('name'):
+              // report.report += student[crit] + ": ";
+              // break;
+
+          }
+
+        }
+        var slp = string.split(".")
+        var shuffle = function(o) {
+          for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+          return o;
+        }
+
+        slp = shuffle(slp);
+        slp = slp.join(". ");
+        slp += ".";
+        slp = slp.replace(/(\.\s\.)/g, ". ")
+        slp = slp.replace(/\.\./g, ". ")
+        slp = slp.replace(/\!\./g, ". ")
+        report.report += slp;
+
+        slp = "";
+
+        if (students[i].gender === "female") {
+
+          var herText = report.report.replace(/\bhis?\b/g, "her");
+
+          var herShe = herText.replace(/\bHe?\b/g, "She");
+
+          var bigHer = herShe.replace(/\bHis?\b/g, "Her");
+
+          var littleShe = bigHer.replace(/\bhe?\b/g, "she");
+
+          report.report = littleShe;
+        }
+
+
+        //make it a bit more personal sounding
+        if (students[i] === "female") {
+
+          var herShe = report.report.replace(/\bShe?\b/, students[i].name);
+
+          var herChange = herShe.replace(/\bHer?\b/g, students[i].name + "'s");
+
+          report.report = herChange;
+        }
+
+
+        if (students[i].gender === "male") {
+
+          var himChange = report.report.replace(/\bHe?\b/, students[i].name);
+
+          var lastMale = himChange.replace(/\bHis?\b/g, students[i].name + "'s");
+
+          report.report = lastMale;
+        }
+
+
+        classReports.students.push(report)
+        string = "";
+
       }
 
+      var canDo = true;
+      if (!userDate) {
+        canDo = false;
+      }
+      if (userDate) {
+        var getDateOfToday = function() {
+          var endDate = function() {
+            return new Date();
+          }();
+          return endDate;
+        }();
+
+        var todaysDate = getDateOfToday;
+        var dayOfEnd = new Date(userDate)
+        todaysDate = todaysDate.getTime()
+        dayOfEnd = dayOfEnd.getTime()
+        if (todaysDate >= dayOfEnd) {
+          canDo = false;
+        }
+
+      }
+      if (canDo) {
+        res.send(classReports);
+      }
+      if (!canDo) {
+        res.send("notAllowed");
+      }
     }
-    return behaviorSentence;
+    putTogetherReport()
+
   }
-
-  function getPronunciation(level){
-    var randomNum = getRandomNumber();
-    var pronunciationSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        pronunciationSentence += excellentPronunciation[randomNum];
-        break;
-
-        case ('Fair'):
-        pronunciationSentence += fairPronunciation[randomNum];
-        break;
-
-        case ('Bad'):
-        pronunciationSentence += badPronunciation[randomNum];
-        break;
-      }
-
-    }
-    return pronunciationSentence;
-  };
-
-
-
-
-  function getReadingAbility(level){
-    var randomNum = getRandomNumber();
-    var readingSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        readingSentence += excellentReadingAbility[randomNum];
-        break;
-
-        case ('Fair'):
-        readingSentence += fairReadingAbility[randomNum];
-        break;
-
-        case ('Bad'):
-        readingSentence += badReadingAbility[randomNum];
-        break;
-      }
-
-    }
-    return readingSentence;
-  };
-
-
-
-
-  function getVerbalComprehension(level){
-    var randomNum = getRandomNumber();
-    var verbalComprehensionSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        verbalComprehensionSentence += excellentVerbalComprehension[randomNum];
-        break;
-
-        case ('Fair'):
-        verbalComprehensionSentence += fairVerbalComprehension[randomNum];
-        break;
-
-        case ('Bad'):
-        verbalComprehensionSentence += badVerbalComprehension[randomNum];
-        break;
-      }
-
-    }
-    return verbalComprehensionSentence;
-  };
-
-
-
-
-  function getReadingComprehension(level){
-    var randomNum = getRandomNumber();
-    var readingComprehensionSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        readingComprehensionSentence += excellentReadingComprehension[randomNum];
-        break;
-
-        case ('Fair'):
-        readingComprehensionSentence += fairReadingComprehension[randomNum];
-        break;
-
-        case ('Bad'):
-        readingComprehensionSentence += badReadingComprehension[randomNum];
-        break;
-      }
-
-    }
-    return readingComprehensionSentence;
-  };
-
-
-
-
-
-  function getParticipation(level){
-    var randomNum = getRandomNumber();
-    var participationSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        participationSentence += excellentParticipation[randomNum];
-        break;
-
-        case ('Fair'):
-        participationSentence += fairParticipation[randomNum];
-        break;
-
-        case ('Bad'):
-        participationSentence += badParticipation[randomNum];
-        break;
-      }
-
-    }
-    return participationSentence;
-  };
-
-
-
-
-  function getSpeakingAbility(level){
-    var randomNum = getRandomNumber();
-    var speakingAbilitySentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        speakingAbilitySentence += excellentSpeakingAbility[randomNum];
-        break;
-
-        case ('Fair'):
-        speakingAbilitySentence += fairSpeakingAbility[randomNum];
-        break;
-
-        case ('Bad'):
-        speakingAbilitySentence += badSpeakingAbility[randomNum];
-        break;
-      }
-
-    }
-    return speakingAbilitySentence;
-  };
-
-
-
-
-  function getVocabularyTest(level){
-    var randomNum = getRandomNumber();
-    var vocabularyTestSentence = " ";
-    if(level != "N/A"){
-      switch(level){
-        case ('Excellent'):
-        vocabularyTestSentence += excellentVocabularyTests[randomNum];
-        break;
-
-        case ('Fair'):
-        vocabularyTestSentence += fairVocabularyTests[randomNum];
-        break;
-
-        case ('Bad'):
-        vocabularyTestSentence += badVocabularyTests[randomNum];
-        break;
-
-
-      }
-
-    }
-    return vocabularyTestSentence;
-  };
-
-
-
-  function putTogetherReport(){
-
-    var students = req.body.students;
-    var combine = "";
-    var classReports= {};
-    classReports.className = req.body.className;
-    classReports.students = [];
-console.log(students, "students in server")
-for(var i = 0; i < students.length; i++){
-
-  var combine = "";
-  var report = {name: students[i], report: students[i].name + ": "};
-
-    for(var crit in students[i]){
-
-      switch(crit){
-        case ('readingAbility'):
-        report.report += getReadingAbility(students[i][crit]);
-        break;
-
-        case ('vocabularyTests'):
-        report.report += getVocabularyTest(students[i][crit]);
-        break;
-
-        case ('speakingAbility'):
-        report.report += getSpeakingAbility(students[i][crit]);
-        break;
-
-        case ('readingComprehension'):
-        report.report += getReadingComprehension(students[i][crit]);
-        break;
-
-        case ('participation'):
-        report.report += getParticipation(students[i][crit]);
-        break;
-
-        case ('verbalComprehension'):
-        report.report += getVerbalComprehension(students[i][crit]);
-        break;
-
-        case ('behavior'):
-        report.report += getBehavior(students[i][crit]);
-        break;
-
-
-        case ('pronunciation'):
-        report.report += getPronunciation(students[i][crit]);
-        break;
-
-        // case ('name'):
-        // report.report += student[crit] + ": ";
-        // break;
-
-    }
-
-}
-
-  if(students[i].gender === "female"){
-
-  var herText = report.report.replace(/\bhis?\b/g, "her");
-
-  var herShe = herText.replace(/\bHe?\b/g, "She");
-
-  var bigHer = herShe.replace(/\bHis?\b/g, "Her");
-
-  var littleShe = bigHer.replace(/\bhe?\b/g, "she");
-
-  report.report = littleShe;
-  }
-
-
-  //make it a bit more personal sounding
-  if(students[i] === "female"){
-
-    var herShe = report.report.replace(/\bShe?\b/, students[i].name);
-
-    var herChange = herShe.replace(/\bHer?\b/g, students[i].name + "'s");
-
-    report.report = herChange;
-  }
-
-
-  if(students[i].gender === "male"){
-
-    var himChange = report.report.replace(/\bHe?\b/, students[i].name);
-
-    var lastMale = himChange.replace(/\bHis?\b/g, students[i].name + "'s");
-
-    report.report = lastMale;
-  }
-
-
-classReports.students.push(report)
-
-
-  }
-  console.log(classReports, "class reports ready to send")
-  res.send(classReports);
-}
-putTogetherReport()
-
-}
 }

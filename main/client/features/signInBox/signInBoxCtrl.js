@@ -2,7 +2,7 @@ angular.module("reportGenerator").controller('signInBoxCtrl', function($scope, a
 
 var self = this;
 
-var getDateOfToday = function () {
+ self.getDateOfToday = function () {
     var endDate = function () {
         return new Date();
     }();
@@ -11,15 +11,18 @@ return endDate;
 
 this.getUser = function() {
   classService.getUser().then(function(response, err){
-
     self.user = response.data;
-    console.log(self.user)
+
   })
 }
 this.getUser();
 
 $scope.$watch('is.user', function(newValue, oldValue) {
 
-});
 
+});
+$scope.$watch('is.user.dateOfSubscriptionEnd', function(newValue, oldValue) {
+
+
+});
 })

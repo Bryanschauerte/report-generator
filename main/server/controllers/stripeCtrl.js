@@ -16,11 +16,14 @@ module.exports = {
                 return new Date();
             }();
             var month = endDate.getMonth();
+            var year = endDate.getFullYear();
             if(month == 11){
               month = 0;
+              year +=1;
             }else {
               month +=1;
             }
+            endDate.setFullYear(year);
             endDate.setMonth(month);
     return endDate;
         }();
@@ -31,7 +34,7 @@ user.set('dateOfSubscriptionEnd', setDateObject);
             return res.status(500).send(err);
           }
 
-
+res.send(updatedUser)
         });
       });
 
@@ -66,7 +69,7 @@ user.set('dateOfSubscriptionEnd', setDateObject);
           return res.status(500).send(err);
         }
 
-
+res.send(updatedUser)
       });
     });
 
@@ -75,7 +78,7 @@ user.set('dateOfSubscriptionEnd', setDateObject);
 handleMonthCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys')
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
 
     stripe.charges.create({
@@ -100,7 +103,7 @@ next();
 handleYearCharge(req, res, next) {
     var stripeKeys = require('../config/stripeKeys')
     var stripe = require("stripe")(stripeKeys.test.secretKey);
-    var stripeToken = req.body.stripeToken;
+    var stripeToken = req.body.stripeToken.id;
 
     var charge = stripe.charges.create({
       amount: 4000, // amount in cents, again

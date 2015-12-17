@@ -66,8 +66,8 @@ module.exports = {
 
     var fairReadingAbility = {
       1: "His reading has room for improvement but has been good lately.",
-      2: "His reading skills are improving but more effort is needed.",
-      3: "His reading skills are getting better but he needs to work on it a bit more.",
+      2: "His reading is improving but more effort is needed.",
+      3: "His reading skills are getting better but he needs to work on them a bit more.",
       4: "His reading has been improving, but he still needs to practice.",
       5: "His reading ability is getting better as he practices."
 
@@ -380,51 +380,55 @@ module.exports = {
     };
 
     function putTogetherReport() {
-
-      var students = req.body.students;
+      console.log(req.body.user.dateOfSubscriptionEnd);
+      var userDate = req.body.user.dateOfSubscriptionEnd;
+      var students = req.body.studentList.students;
       var combine = "";
       var classReports = {};
-      classReports.className = req.body.className;
+      classReports.className = req.body.studentList.className;
       classReports.students = [];
-      console.log(students, "students in server");
+
       for (var i = 0; i < students.length; i++) {
 
         var combine = "";
-        var report = { name: students[i], report: students[i].name + ": " };
-
+        var report = {
+          name: students[i],
+          report: students[i].name + ": "
+        };
+        var string = " ";
         for (var crit in students[i]) {
 
           switch (crit) {
             case 'readingAbility':
-              report.report += getReadingAbility(students[i][crit]);
+              string += getReadingAbility(students[i][crit]);
               break;
 
             case 'vocabularyTests':
-              report.report += getVocabularyTest(students[i][crit]);
+              string += getVocabularyTest(students[i][crit]);
               break;
 
             case 'speakingAbility':
-              report.report += getSpeakingAbility(students[i][crit]);
+              string += getSpeakingAbility(students[i][crit]);
               break;
 
             case 'readingComprehension':
-              report.report += getReadingComprehension(students[i][crit]);
+              string += getReadingComprehension(students[i][crit]);
               break;
 
             case 'participation':
-              report.report += getParticipation(students[i][crit]);
+              string += getParticipation(students[i][crit]);
               break;
 
             case 'verbalComprehension':
-              report.report += getVerbalComprehension(students[i][crit]);
+              string += getVerbalComprehension(students[i][crit]);
               break;
 
             case 'behavior':
-              report.report += getBehavior(students[i][crit]);
+              string += getBehavior(students[i][crit]);
               break;
 
             case 'pronunciation':
-              report.report += getPronunciation(students[i][crit]);
+              string += getPronunciation(students[i][crit]);
               break;
 
             // case ('name'):
@@ -433,6 +437,21 @@ module.exports = {
 
           }
         }
+        var slp = string.split(".");
+        var shuffle = function shuffle(o) {
+          for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x) {}
+          return o;
+        };
+
+        slp = shuffle(slp);
+        slp = slp.join(". ");
+        slp += ".";
+        slp = slp.replace(/(\.\s\.)/g, ". ");
+        slp = slp.replace(/\.\./g, ". ");
+        slp = slp.replace(/\!\./g, ". ");
+        report.report += slp;
+
+        slp = "";
 
         if (students[i].gender === "female") {
 
@@ -467,9 +486,35 @@ module.exports = {
         }
 
         classReports.students.push(report);
+        string = "";
       }
-      console.log(classReports, "class reports ready to send");
-      res.send(classReports);
+
+      var canDo = true;
+      if (!userDate) {
+        canDo = false;
+      }
+      if (userDate) {
+        var getDateOfToday = (function () {
+          var endDate = (function () {
+            return new Date();
+          })();
+          return endDate;
+        })();
+
+        var todaysDate = getDateOfToday;
+        var dayOfEnd = new Date(userDate);
+        todaysDate = todaysDate.getTime();
+        dayOfEnd = dayOfEnd.getTime();
+        if (todaysDate >= dayOfEnd) {
+          canDo = false;
+        }
+      }
+      if (canDo) {
+        res.send(classReports);
+      }
+      if (!canDo) {
+        res.send("notAllowed");
+      }
     }
     putTogetherReport();
   }

@@ -40,6 +40,17 @@
 <div class="greyAccent col s10">
   <student user="is.user" ng-show="is.currentStudent && is.showStudent" show-reports="is.showReports" student-info="is.currentStudent" class-info="is.classInfo"></student>
   <a class="btn-large waves-effect waves-light redBackground" ng-show="is.currentStudent && is.showStudent" ng-click="is.deleteStudent(is.currentStudent.classId, is.currentStudent._id)">Delete this Student</a>
-  <report user="is.user" reports="is.reports" show-reports="is.showReports" ng-show="is.showReports && !is.showStudent"></report>
+  <report user="is.user" reports="is.reports" show-reports="is.showReports" ng-show="is.showReports && !is.showStudent && is.canDoReports"></report>
+  <div ng-show="!is.showReports && !is.showStudent && !is.canDoReports">
+
+    <div class="row">
+      <div class="col s12 center-align">
+        <div class="card-panel redBackground">
+          <h2 class="accountTitle">Sorry, You need to renew your subscription on the "My Account" page</h2>
+        </div>
+      </div>
+    </div>
+
+    </div>
 </div>
 </div>
