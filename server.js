@@ -13,15 +13,29 @@ var   express = require('express')
 	, stripeCtrl = require('./server/controllers/stripeCtrl')
 	, stripeKeys = require('./server/config/stripeKeys')
 	, stripe = require("stripe")(stripeKeys.test.secretKey)
+  , uuid = require('node-uuid');
 
-	, port = 80
 
-, uuid = require('node-uuid')
-	// , stripe = require("stripe")(stripeKeys.test.secretKey)
+////new
+	var mongoPort = process.env.MONGO_PORT || 27017;
+	var mongoURI  = 'mongodb://localhost:' + mongoPort + '/reportGenerator';
 
-	, mongoUri = 'mongodb://localhost:27017/reportGenerator';
+
+	// , mongoUri = 'mongodb://localhost:27017/reportGenerator';
+
+
+
 	var config = module.exports = {};
-	config.portNum = 80;
+
+	if (process.env.NODE_ENV == "dev") {
+		// DEVELOPMENT-SPECIFIC CONFIG //
+		config.portNum = 3000;
+
+	} else {
+		// PRODUCTION-SPECIFIC CONFIG //
+		config.portNum = 80;
+
+	}
 
 	var portNum = config.portNum;
 
@@ -97,6 +111,6 @@ app.put('/api/:userId/group/makeClassReports', reportsCtrl.doReports);
 app.put('/api/:userId/groups/update-grade/', userCtrl.updateGrades);
 
 
-app.listen(port, function() {
-	console.log('Listening on ' + port);
+app.listen(portNum, function() {
+	console.log('Listening on ' + portNum);
 });
