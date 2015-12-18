@@ -16,28 +16,18 @@ var   express = require('express')
   , uuid = require('node-uuid');
 
 
-////new
 	var mongoPort = process.env.MONGO_PORT || 27017;
 	var mongoURI  = 'mongodb://localhost:' + mongoPort + '/reportGenerator';
-
-
-	// , mongoUri = 'mongodb://localhost:27017/reportGenerator';
-
-
-
-	var config = module.exports = {};
+	var servConfig = module.exports = {};
 
 	if (process.env.NODE_ENV == "dev") {
-		// DEVELOPMENT-SPECIFIC CONFIG //
-		config.portNum = 3000;
+		servConfig.portNum = 80;
 
 	} else {
-		// PRODUCTION-SPECIFIC CONFIG //
-		config.portNum = 80;
-
+		servConfig.portNum = 80;
 	}
 
-	var portNum = config.portNum;
+	var portNum = servConfig.portNum;
 
 require('./server/config/passport')(passport);
 
@@ -56,9 +46,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(mongoUri);
+mongoose.connect(mongoURI);
 mongoose.connection.once('open', function() {
-	console.log('Connected to MongoDB at ' + mongoUri);
+	console.log('Connected to MongoDB at ' + mongoURI);
 });
 
 ////////
